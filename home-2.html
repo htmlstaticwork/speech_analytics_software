@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VoxInsight — The Intelligence Layer for Calls</title>
+    <meta name="description" content="Go beyond transcription. Measure tone shifts, silence gaps, escalation risk, and coaching signals that move CSAT, AHT, and FCR." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23A16207' d='M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/dark-mode.css" rel="stylesheet" />
+    <link href="assets/css/rtl.css" rel="stylesheet" />
+    <style>
+      .vi-wave{border-radius:var(--vi-radius);border:1px solid var(--vi-border);background:var(--vi-black);color:var(--vi-white);padding:22px;position:relative;overflow:hidden}
+      .vi-wave svg{width:100%;height:180px}
+      .vi-wave .tag{position:absolute;inset:auto 18px 16px 18px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+      .vi-pulse{transform-origin:center;animation:viPulse 1.6s ease-in-out infinite}
+      @keyframes viPulse{0%,100%{opacity:.6}50%{opacity:1}}
+      [data-theme="dark"] .vi-wave{background:rgba(0,0,0,.35);border-color:var(--vi-border)}
+    </style>
+  </head>
+  <body>
+    <a class="vi-skip" href="#main">Skip to content</a>
+
+    <header class="vi-navbar">
+      <div class="container vi-container">
+        <div class="vi-nav-inner">
+          <button class="vi-nav-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#viOffcanvas" aria-controls="viOffcanvas" aria-label="Open menu">
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <div class="vi-nav-brand">
+            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VoxInsight logo">
+                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+              </svg>
+              <div>
+                <strong>VoxInsight</strong><span>.</span>
+              </div>
+            </a>
+          </div>
+
+          <nav class="vi-nav-desktop" aria-label="Primary">
+            <a class="fw-bold" href="index.html">Home</a>
+            <a class="fw-bold" href="services.html">Platform</a>
+            <a class="fw-bold" href="service-details.html">Solutions</a>
+            <a class="fw-bold" href="pricing.html">Pricing</a>
+            <a class="fw-bold" href="blog.html">Blog</a>
+            <a class="fw-bold" href="contact.html">Contact</a>
+          </nav>
+
+          <div class="vi-nav-actions">
+            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-dir-toggle aria-pressed="false" aria-label="Toggle direction">
+              <i class="bi bi-text-paragraph" aria-hidden="true"></i>
+              <span class="vi-mono" data-vi-dir-label>LTR</span>
+            </button>
+            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+              <i class="bi bi-circle-half" aria-hidden="true"></i>
+              <span class="vi-mono" data-vi-theme-label>Light</span>
+            </button>
+            <a class="btn btn-vi btn-vi-primary d-none d-sm-inline-flex" href="contact.html#demo">Request Demo</a>
+            <a class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" href="login.html">Login</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="offcanvas offcanvas-end vi-offcanvas" tabindex="-1" id="viOffcanvas" aria-labelledby="viOffcanvasLabel">
+        <div class="offcanvas-header">
+          <div class="vi-logo" id="viOffcanvasLabel">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+            </svg>
+            <div><strong>VoxInsight</strong><span>.</span></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="nav flex-column" aria-label="Mobile">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="services.html">Platform</a>
+            <a class="nav-link" href="service-details.html">Solutions</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <div class="mt-3 d-grid gap-2">
+              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-dir-toggle aria-pressed="false">
+                <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono" data-vi-dir-label>LTR</span>
+              </button>
+              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-theme-toggle aria-pressed="false">
+                <i class="bi bi-circle-half" aria-hidden="true"></i> <span class="vi-mono" data-vi-theme-label>Light</span>
+              </button>
+              <a class="btn btn-vi btn-vi-primary" href="contact.html#demo">Request Demo</a>
+              <a class="btn btn-vi btn-vi-outline" href="login.html">Login</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="vi-section compact">
+        <div class="container vi-container">
+          <div class="vi-wave">
+            <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-2 mb-3">
+              <div>
+                <h1 class="vi-h1 mb-1">Every Call Tells a Story. VoxInsight Reads Between the Lines.</h1>
+                <p class="vi-lead mb-0">The intelligence layer that turns voice into measurable coaching and operational outcomes.</p>
+              </div>
+              <div class="d-flex flex-wrap gap-2">
+                <a class="btn btn-vi btn-vi-primary" href="contact.html#demo">Request Demo</a>
+                <a class="btn btn-vi btn-vi-outline" href="dashboard.html">Open Dashboard</a>
+              </div>
+            </div>
+            <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Waveform visualization">
+              <g fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10" stroke-linecap="round">
+                <path d="M10 100 L10 90 M40 100 L40 60 M70 100 L70 30 M100 100 L100 80 M130 100 L130 50 M160 100 L160 20 M190 100 L190 70 M220 100 L220 40 M250 100 L250 65 M280 100 L280 25 M310 100 L310 55 M340 100 L340 35 M370 100 L370 75 M400 100 L400 45 M430 100 L430 28 M460 100 L460 58 M490 100 L490 22 M520 100 L520 68 M550 100 L550 42 M580 100 L580 30 M610 100 L610 66 M640 100 L640 25 M670 100 L670 54 M700 100 L700 38 M730 100 L730 72 M760 100 L760 44 M790 100 L790 30 M820 100 L820 62 M850 100 L850 48 M880 100 L880 80" />
+              </g>
+              <g class="vi-pulse" fill="none" stroke="var(--vi-accent)" stroke-width="10" stroke-linecap="round">
+                <path d="M25 100 L25 76 M55 100 L55 34 M85 100 L85 64 M115 100 L115 46 M145 100 L145 26 M175 100 L175 56 M205 100 L205 36 M235 100 L235 74 M265 100 L265 44 M295 100 L295 24 M325 100 L325 62 M355 100 L355 40 M385 100 L385 68 M415 100 L415 28 M445 100 L445 54 M475 100 L475 34 M505 100 L505 72 M535 100 L535 40 M565 100 L565 60 M595 100 L595 28 M625 100 L625 70 M655 100 L655 44 M685 100 L685 62 M715 100 L715 34 M745 100 L745 58 M775 100 L775 28 M805 100 L805 68 M835 100 L835 46 M865 100 L865 60" />
+              </g>
+            </svg>
+            <div class="tag">
+              <span class="vi-badge dot">Tone shifts</span>
+              <span class="vi-badge">Silence gaps</span>
+              <span class="vi-badge">Compliance cues</span>
+              <span class="vi-badge">Resolution confidence</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section">
+        <div class="container vi-container">
+          <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+            <div>
+              <h2 class="vi-h2 mb-2">3 things you’re missing</h2>
+              <p class="vi-lead mb-0">Blind spots that show up in the audio before they show up in your KPIs.</p>
+            </div>
+            <a class="btn btn-vi btn-vi-outline" href="services.html">See features</a>
+          </div>
+
+          <div class="accordion mt-3" id="viMissed">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#viM1" aria-expanded="true" aria-controls="viM1">
+                  Tone shifts in the first 30 seconds predict escalation.
+                </button>
+              </h3>
+              <div id="viM1" class="accordion-collapse collapse show" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  VoxInsight flags early negativity and interruption patterns so supervisors can intervene before AHT balloons and CSAT drops.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM2" aria-expanded="false" aria-controls="viM2">
+                  Silence gaps over 5 seconds correlate with churn.
+                </button>
+              </h3>
+              <div id="viM2" class="accordion-collapse collapse" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  Long pauses often mean searching, uncertainty, or policy confusion. We surface where silence happens and which scripts prevent it.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM3" aria-expanded="false" aria-controls="viM3">
+                  Agents who mirror customer language close 40% more.
+                </button>
+              </h3>
+              <div id="viM3" class="accordion-collapse collapse" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  We highlight phrases tied to resolution confidence and empathy. Turn top performers into a repeatable coaching blueprint.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section compact">
+        <div class="container vi-container">
+          <div class="vi-card">
+            <div class="vi-card-body">
+              <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+                <div>
+                  <h2 class="vi-h2 mb-2">ROI calculator</h2>
+                  <p class="vi-lead mb-0">Estimate savings from fewer escalations and faster resolution.</p>
+                </div>
+                <span class="vi-badge dot">No backend</span>
+              </div>
+
+              <form class="vi-form needs-validation mt-3" data-vi-roi-form novalidate>
+                <div class="row g-3">
+                  <div class="col-12 col-lg-5">
+                    <label class="form-label fw-bold" for="callVolume">Monthly call volume</label>
+                    <input id="callVolume" class="form-control" name="call_volume" type="number" min="1" inputmode="numeric" placeholder="e.g., 120000" required />
+                    <div class="invalid-feedback">Enter a number greater than 0.</div>
+                  </div>
+                  <div class="col-12 col-lg-5">
+                    <label class="form-label fw-bold" for="agentCount">Average agent count</label>
+                    <input id="agentCount" class="form-control" name="agent_count" type="number" min="1" inputmode="numeric" placeholder="e.g., 180" required />
+                    <div class="invalid-feedback">Enter a number greater than 0.</div>
+                  </div>
+                  <div class="col-12 col-lg-2 d-grid">
+                    <label class="form-label fw-bold d-none d-lg-block">&nbsp;</label>
+                    <button class="btn btn-vi btn-vi-primary" type="submit">Calculate</button>
+                  </div>
+                </div>
+              </form>
+
+              <div class="mt-3 vi-mono fw-bold" data-vi-roi-out>Enter values to estimate savings.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section">
+        <div class="container vi-container">
+          <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+            <div>
+              <h2 class="vi-h2 mb-2">Security &amp; compliance</h2>
+              <p class="vi-lead mb-0">Built for call centers handling regulated customer data.</p>
+            </div>
+            <a class="btn btn-vi btn-vi-outline" href="contact.html">Ask about controls</a>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-metric">
+                    <div>
+                      <div class="label">SOC 2</div>
+                      <div class="small opacity-75">Operational controls for availability and confidentiality.</div>
+                    </div>
+                    <div class="value">Type II</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-metric">
+                    <div>
+                      <div class="label">HIPAA</div>
+                      <div class="small opacity-75">Protected health information handling for patient calls.</div>
+                    </div>
+                    <div class="value">Ready</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-metric">
+                    <div>
+                      <div class="label">GDPR</div>
+                      <div class="small opacity-75">Retention controls and data subject workflows.</div>
+                    </div>
+                    <div class="value">Compliant</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-metric">
+                    <div>
+                      <div class="label">PCI-DSS</div>
+                      <div class="small opacity-75">Sensitive payment indicators and redaction support.</div>
+                    </div>
+                    <div class="value">Aligned</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section compact">
+        <div class="container vi-container">
+          <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+            <div>
+              <h2 class="vi-h2 mb-2">From the intelligence hub</h2>
+              <p class="vi-lead mb-0">Call-center analytics that reads like your floor, not a generic blog.</p>
+            </div>
+            <a class="btn btn-vi btn-vi-outline" href="blog.html">View all posts</a>
+          </div>
+
+          <div class="row g-3 mt-2">
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-badge dot mb-2">Analytics</div>
+                  <h3 class="h4 fw-bold">What a “negative spike at 2:34” really means</h3>
+                  <p class="mb-3 opacity-75">How to map timestamp sentiment volatility to supervisor actions that reduce escalations.</p>
+                  <a class="fw-bold" href="blog-details.html">Read article</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="vi-card">
+                <div class="vi-card-body">
+                  <div class="vi-badge dot mb-2">Agent training</div>
+                  <h3 class="h4 fw-bold">Coaching flags that reduce AHT without hurting CSAT</h3>
+                  <p class="mb-3 opacity-75">The patterns top agents share: pacing, phrasing, and resolution confidence cues.</p>
+                  <a class="fw-bold" href="blog-details.html">Read article</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section dark">
+        <div class="container vi-container">
+          <div class="vi-split align-items-center">
+            <div>
+              <h2 class="vi-h2">Your call recordings are a goldmine. Are you mining them?</h2>
+              <p class="vi-lead mt-2">Get a demo built on your metrics: AHT, CSAT, First Call Resolution, and sentiment volatility.</p>
+            </div>
+            <form class="vi-form needs-validation" id="demo" novalidate>
+              <div class="d-grid gap-2">
+                <label class="form-label fw-bold" for="emailDemo2">Work email</label>
+                <input class="form-control" id="emailDemo2" type="email" placeholder="name@company.com" required />
+                <div class="invalid-feedback">Enter a valid email address.</div>
+                <button class="btn btn-vi btn-vi-primary" type="submit">Request a Demo</button>
+                <div class="small opacity-75">Demo includes a sample sentiment timeline and coaching flags.</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="vi-footer">
+      <div class="container vi-container">
+        <div class="row g-4">
+          <div class="col-12 col-lg-4">
+            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+              </svg>
+              <div>
+                <strong>VoxInsight</strong><span>.</span>
+              </div>
+            </a>
+            <p class="mt-2 mb-0 small">Mission control for customer intelligence: every call scored, every agent coached.</p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Product</div>
+            <div class="d-grid gap-1">
+              <a href="services.html">Platform</a>
+              <a href="service-details.html">Solutions</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="dashboard.html">Dashboard</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Company</div>
+            <div class="d-grid gap-1">
+              <a href="about.html">About</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+              <a href="coming-soon.html">Careers</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Resources</div>
+            <div class="d-grid gap-1">
+              <a href="blog.html">Intelligence Hub</a>
+              <a href="services.html">Documentation</a>
+              <a href="pricing.html">ROI</a>
+              <a href="contact.html#demo">Request Demo</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Legal</div>
+            <div class="d-grid gap-1">
+              <a href="404.html">Privacy</a>
+              <a href="404.html">Terms</a>
+              <a href="404.html">Security</a>
+              <a href="404.html">DPA</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
+          <div class="small">© 2026 VoxInsight</div>
+          <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
+            <i class="bi bi-arrow-up" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

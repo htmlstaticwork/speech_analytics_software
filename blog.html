@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>VoxInsight Blog — Call Center Intelligence Hub</title>
+    <meta name="description" content="Call center intelligence articles on sentiment analytics, agent training, QA workflows, and operational reporting tied to CSAT, AHT, and FCR." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23A16207' d='M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="assets/css/dark-mode.css" rel="stylesheet" />
+    <link href="assets/css/rtl.css" rel="stylesheet" />
+    <style>
+      .vi-filter{display:flex;flex-wrap:wrap;gap:10px}
+      .vi-chip{border:1px solid var(--vi-border);border-radius:999px;padding:10px 14px;background:transparent;font-weight:800;min-height:44px}
+      .vi-chip.active{background:var(--vi-accent);border-color:var(--vi-accent);color:var(--vi-white)}
+      .vi-post{border:1px solid var(--vi-border);border-radius:var(--vi-radius);padding:18px;background:var(--vi-surface)}
+      .vi-post .meta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+      .vi-post .meta .tag{font-family:var(--vi-mono);font-weight:900;border:1px solid var(--vi-border);border-radius:999px;padding:6px 10px}
+      [data-theme="dark"] .vi-post{background:var(--vi-surface)}
+    </style>
+  </head>
+  <body>
+    <a class="vi-skip" href="#main">Skip to content</a>
+
+    <header class="vi-navbar">
+      <div class="container vi-container">
+        <div class="vi-nav-inner">
+          <button class="vi-nav-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#viOffcanvas" aria-controls="viOffcanvas" aria-label="Open menu">
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+
+          <div class="vi-nav-brand">
+            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VoxInsight logo">
+                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+              </svg>
+              <div>
+                <strong>VoxInsight</strong><span>.</span>
+              </div>
+            </a>
+          </div>
+
+          <nav class="vi-nav-desktop" aria-label="Primary">
+            <a class="fw-bold" href="index.html">Home</a>
+            <a class="fw-bold" href="services.html">Platform</a>
+            <a class="fw-bold" href="service-details.html">Solutions</a>
+            <a class="fw-bold" href="pricing.html">Pricing</a>
+            <a class="fw-bold" href="blog.html">Blog</a>
+            <a class="fw-bold" href="contact.html">Contact</a>
+          </nav>
+
+          <div class="vi-nav-actions">
+            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-dir-toggle aria-pressed="false" aria-label="Toggle direction">
+              <i class="bi bi-text-paragraph" aria-hidden="true"></i>
+              <span class="vi-mono" data-vi-dir-label>LTR</span>
+            </button>
+            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-theme-toggle aria-pressed="false" aria-label="Toggle theme">
+              <i class="bi bi-circle-half" aria-hidden="true"></i>
+              <span class="vi-mono" data-vi-theme-label>Light</span>
+            </button>
+            <a class="btn btn-vi btn-vi-primary d-none d-sm-inline-flex" href="contact.html#demo">Request Demo</a>
+            <a class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" href="login.html">Login</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="offcanvas offcanvas-end vi-offcanvas" tabindex="-1" id="viOffcanvas" aria-labelledby="viOffcanvasLabel">
+        <div class="offcanvas-header">
+          <div class="vi-logo" id="viOffcanvasLabel">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+            </svg>
+            <div><strong>VoxInsight</strong><span>.</span></div>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <nav class="nav flex-column" aria-label="Mobile">
+            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="services.html">Platform</a>
+            <a class="nav-link" href="service-details.html">Solutions</a>
+            <a class="nav-link" href="pricing.html">Pricing</a>
+            <a class="nav-link" href="blog.html">Blog</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <div class="mt-3 d-grid gap-2">
+              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-dir-toggle aria-pressed="false">
+                <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono" data-vi-dir-label>LTR</span>
+              </button>
+              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-theme-toggle aria-pressed="false">
+                <i class="bi bi-circle-half" aria-hidden="true"></i> <span class="vi-mono" data-vi-theme-label>Light</span>
+              </button>
+              <a class="btn btn-vi btn-vi-primary" href="contact.html#demo">Request Demo</a>
+              <a class="btn btn-vi btn-vi-outline" href="login.html">Login</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="vi-section compact">
+        <div class="container vi-container">
+          <h1 class="vi-h1 mb-2">Call center intelligence hub</h1>
+          <p class="vi-lead mb-0">Search and filter by what supervisors actually do: alerts, coaching, and outcome reporting.</p>
+        </div>
+      </section>
+
+      <section class="vi-section">
+        <div class="container vi-container">
+          <div class="row g-3 align-items-end">
+            <div class="col-12 col-lg-6">
+              <label class="form-label fw-bold" for="viSearch">Search</label>
+              <input id="viSearch" class="form-control" type="search" placeholder="Try: escalation spike, AHT drift, coaching flag…" />
+            </div>
+            <div class="col-12 col-lg-6">
+              <div class="fw-bold mb-2">Filter</div>
+              <div class="vi-filter" role="group" aria-label="Blog filters">
+                <button class="vi-chip active" type="button" data-vi-filter="all">All</button>
+                <button class="vi-chip" type="button" data-vi-filter="ai">AI</button>
+                <button class="vi-chip" type="button" data-vi-filter="analytics">Analytics</button>
+                <button class="vi-chip" type="button" data-vi-filter="agent-training">Agent Training</button>
+                <button class="vi-chip" type="button" data-vi-filter="case-studies">Case Studies</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="d-grid gap-3 mt-4" id="viPosts">
+            <article class="vi-post" data-tags="analytics ai">
+              <div class="meta">
+                <span class="tag">Analytics</span>
+                <span class="tag">AI</span>
+                <span class="tag">6 min</span>
+              </div>
+              <h2 class="h4 fw-bold mt-2 mb-1">Weekly sentiment trend: what supervisors should act on</h2>
+              <p class="opacity-75 mb-3">A bar chart is useless unless you can name the triggers. Learn how to connect volatility to escalations and QA.</p>
+              <a class="fw-bold" href="blog-details.html">Read article</a>
+            </article>
+
+            <article class="vi-post" data-tags="agent-training">
+              <div class="meta">
+                <span class="tag">Agent Training</span>
+                <span class="tag">8 min</span>
+              </div>
+              <h2 class="h4 fw-bold mt-2 mb-1">Coaching flags that reduce AHT without hurting CSAT</h2>
+              <p class="opacity-75 mb-3">Pacing, interruptions, and resolution confidence: the metrics that move fast on the floor.</p>
+              <a class="fw-bold" href="blog-details.html">Read article</a>
+            </article>
+
+            <article class="vi-post" data-tags="case-studies analytics">
+              <div class="meta">
+                <span class="tag">Case Studies</span>
+                <span class="tag">Analytics</span>
+                <span class="tag">5 min</span>
+              </div>
+              <h2 class="h4 fw-bold mt-2 mb-1">Escalation alerts: from “3 today” to the exact timestamp</h2>
+              <p class="opacity-75 mb-3">How teams use “negative spike at 2:34” alerts to shorten review time and stop repeat drivers.</p>
+              <a class="fw-bold" href="blog-details.html">Read article</a>
+            </article>
+
+            <article class="vi-post" data-tags="ai">
+              <div class="meta">
+                <span class="tag">AI</span>
+                <span class="tag">7 min</span>
+              </div>
+              <h2 class="h4 fw-bold mt-2 mb-1">Silence gaps and churn: the hidden pattern in hold-heavy calls</h2>
+              <p class="opacity-75 mb-3">Where pauses happen, why they happen, and which scripts cut the dead air.</p>
+              <a class="fw-bold" href="blog-details.html">Read article</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="vi-section dark">
+        <div class="container vi-container">
+          <div class="vi-split align-items-center">
+            <div>
+              <h2 class="vi-h2">Want the dashboard version of these insights?</h2>
+              <p class="vi-lead mt-2">See alerts, sentiment curves, and coaching queues connected to CSAT and AHT in one place.</p>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-lg-end">
+              <a class="btn btn-vi btn-vi-primary" href="dashboard.html">Open Dashboard</a>
+              <a class="btn btn-vi btn-vi-outline" href="contact.html#demo">Request Demo</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="vi-footer">
+      <div class="container vi-container">
+        <div class="row g-4">
+          <div class="col-12 col-lg-4">
+            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
+              </svg>
+              <div>
+                <strong>VoxInsight</strong><span>.</span>
+              </div>
+            </a>
+            <p class="mt-2 mb-0 small">Mission control for customer intelligence: every call scored, every agent coached.</p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Product</div>
+            <div class="d-grid gap-1">
+              <a href="services.html">Platform</a>
+              <a href="service-details.html">Solutions</a>
+              <a href="pricing.html">Pricing</a>
+              <a href="dashboard.html">Dashboard</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Company</div>
+            <div class="d-grid gap-1">
+              <a href="about.html">About</a>
+              <a href="blog.html">Blog</a>
+              <a href="contact.html">Contact</a>
+              <a href="coming-soon.html">Careers</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Resources</div>
+            <div class="d-grid gap-1">
+              <a href="blog.html">Intelligence Hub</a>
+              <a href="services.html">Documentation</a>
+              <a href="pricing.html">ROI</a>
+              <a href="contact.html#demo">Request Demo</a>
+            </div>
+          </div>
+          <div class="col-6 col-lg-2">
+            <div class="fw-bold mb-2">Legal</div>
+            <div class="d-grid gap-1">
+              <a href="404.html">Privacy</a>
+              <a href="404.html">Terms</a>
+              <a href="404.html">Security</a>
+              <a href="404.html">DPA</a>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
+          <div class="small">© 2026 VoxInsight</div>
+          <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
+            <i class="bi bi-arrow-up" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+      (() => {
+        const search = document.getElementById("viSearch");
+        const postsWrap = document.getElementById("viPosts");
+        const chips = Array.from(document.querySelectorAll("[data-vi-filter]"));
+        if (!search || !postsWrap || !chips.length) return;
+
+        let active = "all";
+
+        const normalize = (s) => (s || "").toLowerCase().trim();
+        const apply = () => {
+          const q = normalize(search.value);
+          const posts = Array.from(postsWrap.querySelectorAll("[data-tags]"));
+          posts.forEach((p) => {
+            const tags = normalize(p.getAttribute("data-tags"));
+            const text = normalize(p.textContent);
+            const passTag = active === "all" ? true : tags.split(/\s+/).includes(active);
+            const passSearch = q ? text.includes(q) : true;
+            p.style.display = passTag && passSearch ? "" : "none";
+          });
+        };
+
+        chips.forEach((c) => {
+          c.addEventListener("click", () => {
+            active = c.getAttribute("data-vi-filter") || "all";
+            chips.forEach((x) => x.classList.toggle("active", x === c));
+            apply();
+          });
+        });
+
+        search.addEventListener("input", apply);
+        apply();
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+[dir="rtl"] body{direction:rtl;text-align:right}
+
+[dir="rtl"] .vi-nav-inner{flex-direction:row-reverse}
+[dir="rtl"] .vi-nav-actions{flex-direction:row-reverse}
+[dir="rtl"] .vi-logo{flex-direction:row-reverse}
+[dir="rtl"] .vi-nav-brand{justify-content:center}
+@media (min-width:1100px){
+  [dir="rtl"] .vi-nav-brand{justify-content:flex-end}
+}
+
+[dir="rtl"] .offcanvas.vi-offcanvas{
+  right:auto;
+  left:0;
+  border-left:none;
+  border-right:1px solid var(--vi-border);
+}
+
+[dir="rtl"] .vi-compare{direction:rtl}
+[dir="rtl"] .vi-metric{flex-direction:row-reverse}
+[dir="rtl"] .vi-metric .value{text-align:left}
+
+[dir="rtl"] .vi-topbar{flex-direction:row-reverse}
+[dir="rtl"] .vi-topbar .right{flex-direction:row-reverse}
+
+[dir="rtl"] .vi-side{border-right:none;border-left:1px solid rgba(255,255,255,.12)}
+[dir="rtl"] .vi-side .nav button{text-align:right}
+
+[dir="rtl"] .dropdown-menu{right:0;left:auto}
+
+[dir="rtl"] .text-start{text-align:right!important}
+[dir="rtl"] .text-end{text-align:left!important}
