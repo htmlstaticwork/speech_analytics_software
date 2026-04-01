@@ -18,6 +18,24 @@
   <link href="assets/css/dark-mode.css" rel="stylesheet" />
   <link href="assets/css/rtl.css" rel="stylesheet" />
   <style>
+    .vi-bento-item {
+  position: relative;
+  border-radius: var(--vi-radius);
+  border: 1px solid var(--vi-border);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px) saturate(120%);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--vi-shadow-sm);
+  padding: 0;
+}
+
+[data-theme="dark"] .vi-bento-item {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.1);
+}
     .vi-wave {
       border-radius: var(--vi-radius);
       border: 1px solid var(--vi-border);
@@ -66,7 +84,7 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <a class="vi-skip" href="#main">Skip to content</a>
 
   <header class="vi-navbar">
@@ -147,7 +165,8 @@
   </div>
 
   <main id="main">
-    <section class="vi-section compact">
+    <section class="vi-hero"
+      style="background: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('assets/images/home2-hero.jpg') center/cover no-repeat;">
       <div class="container vi-container">
         <div class="vi-wave">
           <div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-2 mb-3">
@@ -191,48 +210,111 @@
           <a class="btn btn-vi btn-vi-outline" href="services.html">See features</a>
         </div>
 
-        <div class="accordion mt-3" id="viMissed">
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#viM1"
-                aria-expanded="true" aria-controls="viM1">
-                Tone shifts in the first 30 seconds predict escalation.
-              </button>
-            </h3>
-            <div id="viM1" class="accordion-collapse collapse show" data-bs-parent="#viMissed">
-              <div class="accordion-body">
-                VoxInsight flags early negativity and interruption patterns so supervisors can intervene before AHT
-                balloons and CSAT drops.
+        <div class="vi-split align-items-center">
+          <div class="vi-answer-img">
+            <img src="assets/images/home2-pain.jpg" alt="Intelligence layer visual" loading="lazy">
+          </div>
+          <div class="accordion" id="viMissed">
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#viM1"
+                  aria-expanded="true" aria-controls="viM1">
+                  Tone shifts in the first 30 seconds predict escalation.
+                </button>
+              </h3>
+              <div id="viM1" class="accordion-collapse collapse show" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  VoxInsight flags early negativity and interruption patterns so supervisors can intervene before AHT
+                  balloons and CSAT drops.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM2"
+                  aria-expanded="false" aria-controls="viM2">
+                  Silence gaps over 5 seconds correlate with churn.
+                </button>
+              </h3>
+              <div id="viM2" class="accordion-collapse collapse" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  Long pauses often mean searching, uncertainty, or policy confusion. We surface where silence happens and
+                  which scripts prevent it.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h3 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM3"
+                  aria-expanded="false" aria-controls="viM3">
+                  Agents who mirror customer language close 40% more.
+                </button>
+              </h3>
+              <div id="viM3" class="accordion-collapse collapse" data-bs-parent="#viMissed">
+                <div class="accordion-body">
+                  We highlight phrases tied to resolution confidence and empathy. Turn top performers into a repeatable
+                  coaching blueprint.
+                </div>
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM2"
-                aria-expanded="false" aria-controls="viM2">
-                Silence gaps over 5 seconds correlate with churn.
-              </button>
-            </h3>
-            <div id="viM2" class="accordion-collapse collapse" data-bs-parent="#viMissed">
-              <div class="accordion-body">
-                Long pauses often mean searching, uncertainty, or policy confusion. We surface where silence happens and
-                which scripts prevent it.
-              </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vi-section compact border-top">
+      <div class="container vi-container">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+          <div>
+            <h2 class="vi-h2 mb-2">Who uses VoxInsight</h2>
+            <p class="vi-lead mb-0">Vertical playbooks built on real call behavior, not generic analytics.</p>
+          </div>
+          <a class="btn btn-vi btn-vi-outline" href="service-details.html">See industry use cases</a>
+        </div>
+
+        <div class="vi-bento-grid mt-4">
+          <!-- Insurance - Large Item -->
+          <div class="vi-bento-item large">
+            <img src="assets/images/vertical-insurance.jpg" alt="Insurance Industry AI" class="vi-bento-img" loading="lazy">
+            <div class="vi-bento-content">
+              <div class="vi-bento-tag">Verticals</div>
+              <h3 class="vi-bento-title">Insurance Claims & Compliance</h3>
+              <p class="vi-bento-desc">Detect policy confusion and high-risk sentiment markers in real-time before they escalate into formal complaints or policy churn.</p>
+              <div class="vi-bento-metric">↑ 23% First Call Resolution</div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h3 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM3"
-                aria-expanded="false" aria-controls="viM3">
-                Agents who mirror customer language close 40% more.
-              </button>
-            </h3>
-            <div id="viM3" class="accordion-collapse collapse" data-bs-parent="#viMissed">
-              <div class="accordion-body">
-                We highlight phrases tied to resolution confidence and empathy. Turn top performers into a repeatable
-                coaching blueprint.
-              </div>
+
+          <!-- Telecom -->
+          <div class="vi-bento-item">
+            <img src="assets/images/vertical-telecom.jpg" alt="Telecom Analytics" class="vi-bento-img" loading="lazy">
+            <div class="vi-bento-content">
+              <div class="vi-bento-tag">Telecom</div>
+              <h3 class="vi-bento-title">Retention Intelligence</h3>
+              <p class="vi-bento-desc">Catch escalation triggers and churn intent in the first 30 seconds of billing calls.</p>
+              <div class="vi-bento-metric">↓ 17% Escalations</div>
             </div>
+          </div>
+
+          <!-- Banking -->
+          <div class="vi-bento-item">
+            <img src="assets/images/vertical-banking.jpg" alt="Banking Compliance" class="vi-bento-img" loading="lazy">
+            <div class="vi-bento-content">
+              <div class="vi-bento-tag">Banking</div>
+              <h3 class="vi-bento-title">Compliance Guardrails</h3>
+              <p class="vi-bento-desc">Automatically flag sensitive phrases and verify mandatory resolution scripts are followed.</p>
+              <div class="vi-bento-metric">↑ 11% QA Pass Rate</div>
+            </div>
+          </div>
+
+          <!-- Healthcare - Large Item -->
+          <div class="vi-bento-item large">
+            <div class="vi-bento-content">
+              <div class="vi-bento-tag">Healthcare</div>
+              <h3 class="vi-bento-title">Patient Sentiment Trends</h3>
+              <p class="vi-bento-desc">Measure empathy levels and clarity in patient scheduling and billing inquiries to ensure high-quality care delivery standards are met.</p>
+              <div class="vi-bento-metric">↑ 19% Patient Satisfaction</div>
+            </div>
+            <img src="assets/images/vertical-healthcare.jpg" alt="Healthcare AI Trends" class="vi-bento-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -356,24 +438,28 @@
 
         <div class="row g-3 mt-2">
           <div class="col-12 col-lg-6">
-            <div class="vi-card">
+            <div class="vi-card h-100">
+              <div class="vi-img-box">
+                <img src="assets/images/home2-blog-1.jpg" alt="Analytics Insight Preview" loading="lazy">
+              </div>
               <div class="vi-card-body">
-                <div class="vi-badge dot mb-2">Analytics</div>
-                <h3 class="h4 fw-bold">What a “negative spike at 2:34” really means</h3>
-                <p class="mb-3 opacity-75">How to map timestamp sentiment volatility to supervisor actions that reduce
-                  escalations.</p>
-                <a class="fw-bold" href="blog-details.html">Read article</a>
+                <div class="vi-bento-tag mb-2">Strategy</div>
+                <h3 class="h4 fw-bold">Connecting Tone Volatility to CSR Coaching Plans</h3>
+                <p class="mb-3 opacity-75">Learn how to transform a "negative spike" into a structured coaching workflow that reduces AHT by 14%.</p>
+                <a class="fw-bold" href="blog-details.html">Read strategy</a>
               </div>
             </div>
           </div>
           <div class="col-12 col-lg-6">
-            <div class="vi-card">
+            <div class="vi-card h-100">
+              <div class="vi-img-box">
+                <img src="assets/images/home2-blog-2.jpg" alt="Agent Coaching Preview" loading="lazy">
+              </div>
               <div class="vi-card-body">
-                <div class="vi-badge dot mb-2">Agent training</div>
-                <h3 class="h4 fw-bold">Coaching flags that reduce AHT without hurting CSAT</h3>
-                <p class="mb-3 opacity-75">The patterns top agents share: pacing, phrasing, and resolution confidence
-                  cues.</p>
-                <a class="fw-bold" href="blog-details.html">Read article</a>
+                <div class="vi-bento-tag mb-2">Case Study</div>
+                <h3 class="h4 fw-bold">How VoxInsight Predicted Churn for a Global Telco</h3>
+                <p class="mb-3 opacity-75">Mapping silence gaps and resolution confidence markers across 50,000 calls to reveal hidden churn drivers.</p>
+                <a class="fw-bold" href="blog-details.html">Read case study</a>
               </div>
             </div>
           </div>
@@ -450,11 +536,16 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
-        <div class="small">© 2026 VoxInsight</div>
-        <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
-          <i class="bi bi-arrow-up" aria-hidden="true"></i>
-        </button>
+      <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center gap-3 mt-5 pt-4 border-top text-center text-lg-start">
+        <div class="small opacity-75">© 2026 VoxInsight — All Rights Reserved.</div>
+        
+        <div class="vi-social-links">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+
       </div>
     </div>
   </footer>

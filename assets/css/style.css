@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --vi-black: #000;
   --vi-white: #fff;
@@ -564,27 +568,122 @@ a:hover {
   background: var(--vi-accent);
 }
 
-.vi-verticals .vi-row {
-  border: 1px solid var(--vi-border);
-  border-radius: var(--vi-radius);
-  padding: 18px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.vi-verticals .k {
-  font-weight: 900;
-  font-size: 18px
-}
-
-.vi-verticals .u {
-  opacity: .82
-}
-
 .vi-verticals .m {
   font-family: var(--vi-mono);
   font-weight: 900
+}
+
+/* Bento Grid for Home 2 */
+.vi-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .vi-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .vi-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+  }
+}
+
+.vi-bento-item {
+  position: relative;
+  border-radius: var(--vi-radius);
+  border: 1px solid var(--vi-border);
+  background: var(--vi-surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--vi-shadow-sm);
+  padding: 0;
+}
+
+.vi-bento-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--vi-shadow);
+  border-color: var(--vi-accent);
+}
+
+/* Floating Animation */
+@keyframes viFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.vi-bento-item:nth-child(odd) {
+  animation: viFloat 6s ease-in-out infinite;
+}
+
+.vi-bento-item:nth-child(even) {
+  animation: viFloat 8s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+.vi-bento-item:hover {
+  animation-play-state: paused;
+}
+
+.vi-bento-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--vi-border);
+}
+
+.vi-bento-content {
+  padding: 24px;
+  flex-grow: 1;
+}
+
+.vi-bento-tag {
+  font-family: var(--vi-mono);
+  font-weight: 900;
+  color: var(--vi-accent);
+  font-size: 14px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.vi-bento-title {
+  font-weight: 800;
+  font-size: 22px;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+
+.vi-bento-desc {
+  opacity: 0.82;
+  margin-bottom: 16px;
+}
+
+.vi-bento-metric {
+  font-family: var(--vi-mono);
+  font-weight: 900;
+  background: var(--vi-soft);
+  padding: 8px 12px;
+  border-radius: 8px;
+  display: inline-block;
+}
+
+@media (min-width: 1200px) {
+  .vi-bento-item.large {
+    grid-column: span 2;
+    flex-direction: row;
+  }
+  .vi-bento-item.large .vi-bento-img {
+    width: 45%;
+    height: 100%;
+    border-bottom: none;
+    border-right: 1px solid var(--vi-border);
+  }
 }
 
 .vi-trust {
@@ -624,17 +723,31 @@ a:hover {
   opacity: .78
 }
 
-.vi-footer .backtop {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  border: 1px solid var(--vi-border);
-  background: transparent;
+
+.vi-social-links {
+  display: flex;
+  gap: 12px;
 }
 
-.vi-footer .backtop:focus {
-  outline: none;
-  box-shadow: 0 0 0 .25rem rgba(161, 98, 7, .25)
+.vi-social-links a {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: 1px solid var(--vi-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: var(--vi-fg);
+  opacity: 0.82;
+}
+
+.vi-social-links a:hover {
+  background: var(--vi-soft) !important;
+  color: var(--vi-accent) !important;
+  border-color: var(--vi-accent);
+  opacity: 1;
+  text-decoration: none;
 }
 
 .vi-form .form-control,
@@ -891,3 +1004,47 @@ a:hover {
     transition-duration: 0.001ms !important
   }
 }
+
+.vi-pain-img, .vi-answer-img {
+  width: 100%;
+  border-radius: var(--vi-radius);
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: var(--vi-shadow-sm);
+  border: 1px solid var(--vi-border);
+}
+
+.vi-pain-img img, .vi-answer-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.vi-pain-img:hover img, .vi-answer-img:hover img {
+  transform: scale(1.03);
+}
+
+.vi-vertical-card-img {
+  width: 100%;
+  height: 140px;
+  border-radius: 14px;
+  margin-bottom: 14px;
+  overflow: hidden;
+  border: 1px solid var(--vi-border);
+}
+
+.vi-vertical-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.vi-vertical-card-img:hover img {
+  transform: scale(1.05);
+}
+
+.item-telecom .vi-vertical-card-img img { filter: hue-rotate(45deg); }
+.item-banking .vi-vertical-card-img img { filter: hue-rotate(90deg); }
+.item-healthcare .vi-vertical-card-img img { filter: hue-rotate(180deg); }

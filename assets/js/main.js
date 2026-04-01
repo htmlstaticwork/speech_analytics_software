@@ -51,13 +51,6 @@
     });
   };
 
-  const bindBackToTop = () => {
-    document.querySelectorAll("[data-vi-backtop]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    });
-  };
 
   const initBootstrapValidation = () => {
     const forms = document.querySelectorAll("form.needs-validation");
@@ -157,7 +150,6 @@
   document.addEventListener("DOMContentLoaded", () => {
     applyPrefs();
     bindToggles();
-    bindBackToTop();
     initBootstrapValidation();
     initTranscriptDemo();
     initRoiCalculator();

@@ -36,7 +36,7 @@
   </style>
 </head>
 
-<body>
+<body id="top">
   <a class="vi-skip" href="#main">Skip to content</a>
 
   <header class="vi-navbar">
@@ -118,7 +118,7 @@
 
   <main id="main">
     <section class="vi-hero"
-      style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('assets/images/hero-viz.png') center/cover no-repeat;">
+      style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('assets/images/hero-analysis.png') center/cover no-repeat;">
       <div class="container vi-container">
         <div class="vi-split align-items-start">
           <div class="vi-transcript">
@@ -160,6 +160,9 @@
         <div class="vi-compare">
           <div class="pain">
             <h2 class="vi-h2 mb-3">The problem you already have</h2>
+            <div class="vi-pain-img">
+              <img src="assets/images/pain-points.png" alt="Call center frustration visual" loading="lazy">
+            </div>
             <div class="row">
               <div class="t">Your agents wing every call.</div>
               <div class="d">Inconsistent talk tracks increase AHT and drop CSAT in the same week.</div>
@@ -179,6 +182,9 @@
           </div>
           <div class="answer">
             <h2 class="vi-h2 mb-3">VoxInsight makes it measurable</h2>
+            <div class="vi-answer-img">
+              <img src="assets/images/ai-solution.png" alt="AI Analytics Dashboard solution" loading="lazy">
+            </div>
             <div class="row">
               <div class="t">Agent Performance Index per call.</div>
               <div class="d">Detect pacing, interruptions, empathy phrases, and resolution confidence.</div>
@@ -284,22 +290,34 @@
         </div>
 
         <div class="vi-verticals mt-3 d-grid gap-2">
-          <div class="vi-row">
+          <div class="vi-row item-insurance">
+            <div class="vi-vertical-card-img">
+              <img src="assets/images/insurance.jpg" alt="Insurance Industry" loading="lazy">
+            </div>
             <div class="k">Insurance</div>
             <div class="u">Detect policy confusion in real-time before it becomes a complaint.</div>
             <div class="m">↑ 23% First Call Resolution</div>
           </div>
-          <div class="vi-row">
+          <div class="vi-row item-telecom">
+            <div class="vi-vertical-card-img">
+              <img src="assets/images/telecome.jpeg" alt="Telecom Industry" loading="lazy">
+            </div>
             <div class="k">Telecom</div>
             <div class="u">Catch escalation triggers in the first 30 seconds and protect CSAT.</div>
             <div class="m">↓ 17% Escalations</div>
           </div>
-          <div class="vi-row">
+          <div class="vi-row item-banking">
+            <div class="vi-vertical-card-img">
+              <img src="assets/images/banking.webp" alt="Banking Industry" loading="lazy">
+            </div>
             <div class="k">Banking</div>
             <div class="u">Flag compliance-sensitive phrases and verify resolution confidence.</div>
             <div class="m">↑ 11% QA pass rate</div>
           </div>
-          <div class="vi-row">
+          <div class="vi-row item-healthcare">
+            <div class="vi-vertical-card-img">
+              <img src="assets/images/helthcare.jpg" alt="Healthcare Industry" loading="lazy">
+            </div>
             <div class="k">Healthcare</div>
             <div class="u">Measure empathy and clarity in appointment + billing calls.</div>
             <div class="m">↑ 19% Patient satisfaction</div>
@@ -389,11 +407,16 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
-        <div class="small">© 2026 VoxInsight</div>
-        <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
-          <i class="bi bi-arrow-up" aria-hidden="true"></i>
-        </button>
+      <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center gap-3 mt-5 pt-4 border-top text-center text-lg-start">
+        <div class="small opacity-75">© 2026 VoxInsight — All Rights Reserved.</div>
+
+        <div class="vi-social-links">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="GitHub"><i class="bi bi-github"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+        </div>
+
       </div>
     </div>
   </footer>
