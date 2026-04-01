@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Chat Symbol (Main Base) -->
+  <path d="M32 6C17.6406 6 6 17.6406 6 32C6 38.0772 8.08332 43.6685 11.5794 48.0763L8 58L17.9237 54.4206C22.3315 57.9167 27.9228 60 32 60C46.3594 60 58 48.3594 58 32C58 17.6406 46.3594 6 32 6Z" fill="#A16207"/>
+  
+  <!-- Microphone (Positioned at Top) -->
+  <rect x="29" y="12" width="6" height="10" rx="3" fill="white"/>
+  <path d="M25 20C25 23.866 28.134 27 32 27C35.866 27 39 23.866 39 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  
+  <!-- Heartbeat / Pulse (Positioned at Bottom, below Mic) -->
+  <path d="M14 44H22L25 36L30 54L35 39L39 44H50" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

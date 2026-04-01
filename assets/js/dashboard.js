@@ -75,6 +75,7 @@
     if (typeof window.Chart !== "function") return;
 
     const accent = getAccent();
+    const isRtl = () => document.documentElement.getAttribute("dir") === "rtl";
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
@@ -82,7 +83,7 @@
     const labels = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
     const data = [61, 58, 66, 64, 71, 69, 74];
 
-    new window.Chart(ctx, {
+    const chart = new window.Chart(ctx, {
       type: "bar",
       data: {
         labels,
@@ -101,13 +102,32 @@
         maintainAspectRatio: false,
         plugins: {
           legend: { display: false },
-          tooltip: { intersect: false, mode: "index" },
+          tooltip: {
+            intersect: false,
+            mode: "index",
+            rtl: isRtl(),
+            textDirection: isRtl() ? "rtl" : "ltr",
+          },
         },
         scales: {
           x: { grid: { display: false } },
-          y: { beginAtZero: true, max: 100, ticks: { stepSize: 20 } },
+          y: {
+            beginAtZero: true,
+            max: 100,
+            ticks: { stepSize: 20 },
+            position: isRtl() ? "right" : "left",
+          },
         },
       },
+    });
+
+    document.documentElement.addEventListener("vi-dir-change", (e) => {
+      const { dir } = e.detail;
+      const rtl = dir === "rtl";
+      chart.options.plugins.tooltip.rtl = rtl;
+      chart.options.plugins.tooltip.textDirection = rtl ? "rtl" : "ltr";
+      chart.options.scales.y.position = rtl ? "right" : "left";
+      chart.update();
     });
   };
 

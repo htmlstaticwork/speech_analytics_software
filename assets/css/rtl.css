@@ -1,31 +1,124 @@
-[dir="rtl"] body{direction:rtl;text-align:right}
+/* 100% RTL Support for VoxInsight */
 
-[dir="rtl"] .vi-nav-inner{flex-direction:row-reverse}
-[dir="rtl"] .vi-nav-actions{flex-direction:row-reverse}
-[dir="rtl"] .vi-logo{flex-direction:row-reverse}
-[dir="rtl"] .vi-nav-brand{justify-content:center}
-@media (min-width:1100px){
-  [dir="rtl"] .vi-nav-brand{justify-content:flex-end}
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
 }
 
-[dir="rtl"] .offcanvas.vi-offcanvas{
-  right:auto;
-  left:0;
-  border-left:none;
-  border-right:1px solid var(--vi-border);
+[dir="rtl"] body {
+  text-align: right;
 }
 
-[dir="rtl"] .vi-compare{direction:rtl}
-[dir="rtl"] .vi-metric{flex-direction:row-reverse}
-[dir="rtl"] .vi-metric .value{text-align:left}
+/* --- Navigation Layout --- */
+[dir="rtl"] .vi-nav-inner {
+  display: flex !important;
+}
 
-[dir="rtl"] .vi-topbar{flex-direction:row-reverse}
-[dir="rtl"] .vi-topbar .right{flex-direction:row-reverse}
+[dir="rtl"] .vi-nav-brand {
+  order: 1; 
+  justify-content: flex-start !important; 
+  margin-left: auto;
+  margin-right: 0;
+}
 
-[dir="rtl"] .vi-side{border-right:none;border-left:1px solid rgba(255,255,255,.12)}
-[dir="rtl"] .vi-side .nav button{text-align:right}
+[dir="rtl"] .navbar-collapse {
+  order: 2;
+}
 
-[dir="rtl"] .dropdown-menu{right:0;left:auto}
+[dir="rtl"] .vi-nav-actions {
+  order: 3; 
+}
 
-[dir="rtl"] .text-start{text-align:right!important}
-[dir="rtl"] .text-end{text-align:left!important}
+@media (max-width: 1099px) {
+  [dir="rtl"] .vi-nav-brand {
+    order: 2;
+    justify-content: center !important;
+    margin-left: 0;
+    margin-right: 0;
+    flex: 1 1 auto;
+  }
+  [dir="rtl"] .navbar-toggler.vi-nav-toggler {
+    order: 1;
+    margin-left: 0 !important;
+  }
+  [dir="rtl"] .vi-nav-actions {
+    order: 3;
+    margin-right: 0 !important;
+  }
+}
+
+/* --- Dashboard System --- */
+@media (min-width: 992px) {
+  [dir="rtl"] .vi-dashboard {
+    grid-template-columns: 1fr 280px;
+  }
+  [dir="rtl"] .vi-side {
+    order: 2;
+    border-right: 1px solid rgba(255,255,255,0.12);
+    border-left: none;
+  }
+  [dir="rtl"] .vi-main {
+    order: 1;
+  }
+}
+
+[dir="rtl"] .vi-side .nav button {
+  text-align: right;
+  justify-content: flex-start;
+}
+
+/* --- Navigation & Menu --- */
+[dir="rtl"] .offcanvas.vi-offcanvas {
+  text-align: right;
+}
+
+/* --- Components --- */
+[dir="rtl"] .vi-compare .pain { order: 2; }
+[dir="rtl"] .vi-compare .answer {
+  border-right: 1px solid var(--vi-border);
+  border-left: none;
+  order: 1;
+}
+
+@media (max-width: 991px) {
+  [dir="rtl"] .vi-compare .answer {
+    border-right: none;
+    border-top: 1px solid var(--vi-border);
+  }
+}
+
+[dir="rtl"] .vi-metric .value { text-align: left; }
+
+[dir="rtl"] .vi-badge.dot::before {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* --- Form Overrides --- */
+[dir="rtl"] .form-check { padding-left: 0; padding-right: 1.5em; }
+[dir="rtl"] .form-check-input {
+  float: right;
+  margin-right: -1.5em;
+  margin-left: 0;
+}
+
+/* --- Utilities --- */
+[dir="rtl"] .text-start { text-align: right !important; }
+[dir="rtl"] .text-end { text-align: left !important; }
+[dir="rtl"] .vi-skip { left: auto; right: -9999px; }
+[dir="rtl"] .vi-skip:focus { left: auto; right: 16px; }
+
+/* --- Icons Mirroring --- */
+[dir="rtl"] .bi-chevron-right,
+[dir="rtl"] .bi-arrow-right,
+[dir="rtl"] .bi-arrow-left,
+[dir="rtl"] .bi-chevron-left,
+[dir="rtl"] .bi-box-arrow-in-right,
+[dir="rtl"] .bi-box-arrow-right,
+[dir="rtl"] .bi-arrow-left-short,
+[dir="rtl"] .bi-arrow-right-short,
+[dir="rtl"] .bi-chevron-double-right,
+[dir="rtl"] .bi-chevron-double-left {
+  display: inline-block;
+  transform: scaleX(-1);
+}

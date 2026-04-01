@@ -15,6 +15,13 @@
   background:rgba(26,26,26,.92);
   border-bottom-color:rgba(255,255,255,.14);
 }
+[data-theme="dark"] .vi-nav-link {
+  color: var(--vi-white);
+}
+[data-theme="dark"] .vi-nav-link:hover,
+[data-theme="dark"] .vi-nav-link.active {
+  color: var(--vi-accent);
+}
 
 [data-theme="dark"] .vi-card,
 [data-theme="dark"] .vi-dashboard-mock,

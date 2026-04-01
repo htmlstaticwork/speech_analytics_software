@@ -12,8 +12,6 @@
     else root.removeAttribute("data-theme");
     localStorage.setItem(storageKeys.theme, normalized);
     document.querySelectorAll("[data-vi-theme-toggle]").forEach((btn) => {
-      const label = btn.querySelector("[data-vi-theme-label]");
-      if (label) label.textContent = normalized === "dark" ? "Dark" : "Light";
       btn.setAttribute("aria-pressed", normalized === "dark" ? "true" : "false");
     });
   };
@@ -27,6 +25,7 @@
       if (label) label.textContent = normalized.toUpperCase();
       btn.setAttribute("aria-pressed", normalized === "rtl" ? "true" : "false");
     });
+    root.dispatchEvent(new CustomEvent("vi-dir-change", { detail: { dir: normalized } }));
   };
 
   const applyPrefs = () => {

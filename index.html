@@ -1,21 +1,24 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>VoxInsight — Speech Analytics Mission Control</title>
-    <meta name="description" content="Analyze call center conversations with AI. Track sentiment, CSAT impact, AHT drift, escalation risk, and coaching opportunities in one dashboard." />
-    <meta name="robots" content="index, follow" />
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23A16207' d='M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z'/%3E%3C/svg%3E" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
-    <link href="assets/css/style.css" rel="stylesheet" />
-    <link href="assets/css/dark-mode.css" rel="stylesheet" />
-    <link href="assets/css/rtl.css" rel="stylesheet" />
-    <script type="application/ld+json">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VoxInsight — Speech Analytics Mission Control</title>
+  <meta name="description"
+    content="Analyze call center conversations with AI. Track sentiment, CSAT impact, AHT drift, escalation risk, and coaching opportunities in one dashboard." />
+  <meta name="robots" content="index, follow" />
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="assets/css/dark-mode.css" rel="stylesheet" />
+  <link href="assets/css/rtl.css" rel="stylesheet" />
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
@@ -26,368 +29,379 @@
         "publisher": { "@type": "Organization", "name": "VoxInsight" }
       }
     </script>
-  </head>
-  <body>
-    <a class="vi-skip" href="#main">Skip to content</a>
+  <style>
+    [data-theme="dark"] .vi-hero {
+      background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.92)), url('assets/images/hero-viz.png') center/cover no-repeat !important;
+    }
+  </style>
+</head>
 
-    <header class="vi-navbar">
-      <div class="container vi-container">
-        <div class="vi-nav-inner">
-          <button class="vi-nav-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#viOffcanvas" aria-controls="viOffcanvas" aria-label="Open menu">
-            <i class="bi bi-list" aria-hidden="true"></i>
+<body>
+  <a class="vi-skip" href="#main">Skip to content</a>
+
+  <header class="vi-navbar">
+    <div class="container vi-container">
+      <nav class="navbar navbar-expand-vi vi-nav-inner">
+        <button class="navbar-toggler vi-nav-toggler" type="button" data-bs-toggle="offcanvas"
+          data-bs-target="#viOffcanvas" aria-controls="viOffcanvas" aria-label="Open menu">
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+
+        <div class="vi-nav-brand">
+          <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+            <img src="assets/images/logo.svg" alt="VoxInsight Logo" height="34">
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+          <div class="mx-auto d-flex flex-nowrap gap-3">
+            <a class="vi-nav-link active" href="index.html">Home</a>
+            <a class="vi-nav-link" href="home-2.html">Home 2</a>
+            <a class="vi-nav-link" href="services.html">Platform</a>
+            <a class="vi-nav-link" href="service-details.html">Solutions</a>
+            <a class="vi-nav-link" href="about.html">About</a>
+            <a class="vi-nav-link" href="pricing.html">Pricing</a>
+            <a class="vi-nav-link" href="blog.html">Blog</a>
+            <a class="vi-nav-link" href="contact.html">Contact</a>
+          </div>
+        </div>
+
+        <div class="vi-nav-actions">
+          <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-dir-toggle
+            aria-pressed="false" aria-label="Toggle direction">
+            <i class="bi bi-text-paragraph" aria-hidden="true"></i>
+            <span class="vi-mono" data-vi-dir-label>LTR</span>
           </button>
-
-          <div class="vi-nav-brand">
-            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="VoxInsight logo">
-                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
-              </svg>
-              <div>
-                <strong>VoxInsight</strong><span>.</span>
-              </div>
-            </a>
-          </div>
-
-          <nav class="vi-nav-desktop" aria-label="Primary">
-            <a class="fw-bold" href="index.html">Home</a>
-            <a class="fw-bold" href="services.html">Platform</a>
-            <a class="fw-bold" href="service-details.html">Solutions</a>
-            <a class="fw-bold" href="pricing.html">Pricing</a>
-            <a class="fw-bold" href="blog.html">Blog</a>
-            <a class="fw-bold" href="contact.html">Contact</a>
-          </nav>
-
-          <div class="vi-nav-actions">
-            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-dir-toggle aria-pressed="false" aria-label="Toggle direction">
-              <i class="bi bi-text-paragraph" aria-hidden="true"></i>
-              <span class="vi-mono" data-vi-dir-label>LTR</span>
-            </button>
-            <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-theme-toggle aria-pressed="false" aria-label="Toggle theme">
-              <i class="bi bi-circle-half" aria-hidden="true"></i>
-              <span class="vi-mono" data-vi-theme-label>Light</span>
-            </button>
-            <a class="btn btn-vi btn-vi-primary d-none d-sm-inline-flex" href="contact.html#demo">Request Demo</a>
-            <a class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" href="login.html">Login</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="offcanvas offcanvas-end vi-offcanvas" tabindex="-1" id="viOffcanvas" aria-labelledby="viOffcanvasLabel">
-        <div class="offcanvas-header">
-          <div class="vi-logo" id="viOffcanvasLabel">
-            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
-            </svg>
-            <div><strong>VoxInsight</strong><span>.</span></div>
-          </div>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <div class="offcanvas-body">
-          <nav class="nav flex-column" aria-label="Mobile">
-            <a class="nav-link" href="index.html">Home</a>
-            <a class="nav-link" href="services.html">Platform</a>
-            <a class="nav-link" href="service-details.html">Solutions</a>
-            <a class="nav-link" href="pricing.html">Pricing</a>
-            <a class="nav-link" href="blog.html">Blog</a>
-            <a class="nav-link" href="contact.html">Contact</a>
-            <div class="mt-3 d-grid gap-2">
-              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-dir-toggle aria-pressed="false">
-                <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono" data-vi-dir-label>LTR</span>
-              </button>
-              <button class="btn btn-vi btn-vi-outline" type="button" data-vi-theme-toggle aria-pressed="false">
-                <i class="bi bi-circle-half" aria-hidden="true"></i> <span class="vi-mono" data-vi-theme-label>Light</span>
-              </button>
-              <a class="btn btn-vi btn-vi-primary" href="contact.html#demo">Request Demo</a>
-              <a class="btn btn-vi btn-vi-outline" href="login.html">Login</a>
-            </div>
-          </nav>
-        </div>
-      </div>
-    </header>
-
-    <main id="main">
-      <section class="vi-hero">
-        <div class="container vi-container">
-          <div class="vi-split align-items-start">
-            <div class="vi-transcript">
-              <div class="vi-transcript-inner" data-vi-transcript aria-live="polite" aria-label="Live transcript simulation"></div>
-            </div>
-            <div class="vi-gauge">
-              <div class="vi-gauge-ring" data-vi-gauge-ring style="--vi-gauge-deg:240deg">
-                <div class="vi-gauge-center">
-                  <div class="score" data-vi-gauge-score>78</div>
-                  <div class="state" data-vi-gauge-state>Positive</div>
-                  <div class="hint">Sentiment score (0–100)</div>
-                </div>
-              </div>
-              <div class="d-flex flex-wrap gap-2 justify-content-center">
-                <span class="vi-badge dot">Live scoring</span>
-                <span class="vi-badge">AHT drift watch</span>
-                <span class="vi-badge">Escalation risk</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <h1 class="vi-h1">Stop Guessing. Start Hearing.</h1>
-            <p class="vi-lead mt-2">
-              VoxInsight turns recordings into coaching signals: sentiment curves, CSAT impact, silence gaps, escalation triggers, and agent behaviors you can replicate.
-            </p>
-            <div class="d-flex flex-wrap gap-2 mt-3">
-              <a class="btn btn-vi btn-vi-primary" href="dashboard.html">See VoxInsight in Action</a>
-              <a class="btn btn-vi btn-vi-outline" href="services.html">Explore the Platform</a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="vi-section compact">
-        <div class="container vi-container">
-          <div class="vi-compare">
-            <div class="pain">
-              <h2 class="vi-h2 mb-3">The problem you already have</h2>
-              <div class="row">
-                <div class="t">Your agents wing every call.</div>
-                <div class="d">Inconsistent talk tracks increase AHT and drop CSAT in the same week.</div>
-              </div>
-              <div class="row">
-                <div class="t">You review 2% of conversations.</div>
-                <div class="d">Sampling misses the exact moment tone turns and escalation starts.</div>
-              </div>
-              <div class="row">
-                <div class="t">Complaints spike before you notice.</div>
-                <div class="d">Supervisors see it after the damage: churn, chargebacks, and low scores.</div>
-              </div>
-              <div class="row">
-                <div class="t">Top performers’ habits stay hidden.</div>
-                <div class="d">What they say and when they say it never becomes a repeatable playbook.</div>
-              </div>
-            </div>
-            <div class="answer">
-              <h2 class="vi-h2 mb-3">VoxInsight makes it measurable</h2>
-              <div class="row">
-                <div class="t">Agent Performance Index per call.</div>
-                <div class="d">Detect pacing, interruptions, empathy phrases, and resolution confidence.</div>
-              </div>
-              <div class="row">
-                <div class="t">100% coverage, not guesswork.</div>
-                <div class="d">Every call scored for sentiment, silence gaps, and escalation triggers.</div>
-              </div>
-              <div class="row">
-                <div class="t">Alerts before CSAT drops.</div>
-                <div class="d">Flag negative spikes at timestamp precision for instant review.</div>
-              </div>
-              <div class="row">
-                <div class="t">Codify winning behaviors.</div>
-                <div class="d">Surface language patterns tied to First Call Resolution and lower AHT.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="vi-section">
-        <div class="container vi-container">
-          <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
-            <div>
-              <h2 class="vi-h2 mb-2">Metric dashboard preview</h2>
-              <p class="vi-lead mb-0">A supervisor’s view of what changes on the floor, hour by hour.</p>
-            </div>
-            <span class="vi-badge dot">Static preview</span>
-          </div>
-
-          <div class="vi-dashboard-mock mt-3">
-            <div class="vi-dashboard-top">
-              <div class="vi-mono fw-bold">Operations — Last 7 days</div>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="vi-badge">CSAT 87%</span>
-                <span class="vi-badge">AHT 4m 12s</span>
-                <span class="vi-badge">Sentiment 72%+</span>
-                <span class="vi-badge">Escalations 3.1%</span>
-              </div>
-            </div>
-            <div class="p-3">
-              <div class="vi-grid-2">
-                <div class="vi-card vi-card-tight">
-                  <div class="vi-card-body vi-metric">
-                    <div>
-                      <div class="label">CSAT Score</div>
-                      <div class="small opacity-75">Post-call survey impact</div>
-                    </div>
-                    <div class="value">87%</div>
-                  </div>
-                </div>
-                <div class="vi-card vi-card-tight">
-                  <div class="vi-card-body vi-metric">
-                    <div>
-                      <div class="label">AHT</div>
-                      <div class="small opacity-75">Average handle time</div>
-                    </div>
-                    <div class="value">4:12</div>
-                  </div>
-                </div>
-                <div class="vi-card vi-card-tight">
-                  <div class="vi-card-body vi-metric">
-                    <div>
-                      <div class="label">Sentiment</div>
-                      <div class="small opacity-75">Positive share</div>
-                    </div>
-                    <div class="value">72%</div>
-                  </div>
-                </div>
-                <div class="vi-card vi-card-tight">
-                  <div class="vi-card-body vi-metric">
-                    <div>
-                      <div class="label">Escalation Rate</div>
-                      <div class="small opacity-75">Supervisor takeovers</div>
-                    </div>
-                    <div class="value">3.1%</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="vi-bars" aria-label="Weekly sentiment trend">
-              <div class="vi-bar" aria-label="Monday"><span style="height:62%"></span></div>
-              <div class="vi-bar" aria-label="Tuesday"><span style="height:54%"></span></div>
-              <div class="vi-bar" aria-label="Wednesday"><span style="height:68%"></span></div>
-              <div class="vi-bar" aria-label="Thursday"><span style="height:64%"></span></div>
-              <div class="vi-bar" aria-label="Friday"><span style="height:72%"></span></div>
-              <div class="vi-bar" aria-label="Saturday"><span style="height:69%"></span></div>
-              <div class="vi-bar" aria-label="Sunday"><span style="height:75%"></span></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="vi-section compact">
-        <div class="container vi-container">
-          <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
-            <div>
-              <h2 class="vi-h2 mb-2">Who uses VoxInsight</h2>
-              <p class="vi-lead mb-0">Vertical playbooks built on real call behavior, not generic analytics.</p>
-            </div>
-            <a class="btn btn-vi btn-vi-outline" href="service-details.html">See industry use cases</a>
-          </div>
-
-          <div class="vi-verticals mt-3 d-grid gap-2">
-            <div class="vi-row">
-              <div class="k">Insurance</div>
-              <div class="u">Detect policy confusion in real-time before it becomes a complaint.</div>
-              <div class="m">↑ 23% First Call Resolution</div>
-            </div>
-            <div class="vi-row">
-              <div class="k">Telecom</div>
-              <div class="u">Catch escalation triggers in the first 30 seconds and protect CSAT.</div>
-              <div class="m">↓ 17% Escalations</div>
-            </div>
-            <div class="vi-row">
-              <div class="k">Banking</div>
-              <div class="u">Flag compliance-sensitive phrases and verify resolution confidence.</div>
-              <div class="m">↑ 11% QA pass rate</div>
-            </div>
-            <div class="vi-row">
-              <div class="k">Healthcare</div>
-              <div class="u">Measure empathy and clarity in appointment + billing calls.</div>
-              <div class="m">↑ 19% Patient satisfaction</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="vi-trust">
-        <div class="container vi-container">
-          <div class="d-flex flex-wrap justify-content-center row-gap">
-            <div class="item">Salesforce</div>
-            <div class="item">Zendesk</div>
-            <div class="item">Five9</div>
-            <div class="item">Twilio</div>
-            <div class="item">Genesys</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="vi-section dark">
-        <div class="container vi-container">
-          <div class="vi-split align-items-center">
-            <div>
-              <h2 class="vi-h2">Your call recordings are a goldmine. Are you mining them?</h2>
-              <p class="vi-lead mt-2">Get a demo built on your metrics: AHT, CSAT, First Call Resolution, and sentiment volatility.</p>
-            </div>
-            <form class="vi-form needs-validation" id="demo" novalidate>
-              <div class="d-grid gap-2">
-                <label class="form-label fw-bold" for="emailDemo">Work email</label>
-                <input class="form-control" id="emailDemo" type="email" placeholder="name@company.com" required />
-                <div class="invalid-feedback">Enter a valid email address.</div>
-                <button class="btn btn-vi btn-vi-primary" type="submit">Request a Demo</button>
-                <div class="small opacity-75">No spam. Demo includes a sample sentiment timeline and coaching flags.</div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="vi-footer">
-      <div class="container vi-container">
-        <div class="row g-4">
-          <div class="col-12 col-lg-4">
-            <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
-              <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path fill="currentColor" d="M10 36c9 0 9-18 18-18s9 18 18 18 9-18 18-18v10c-9 0-9 18-18 18S41 28 32 28 23 46 14 46 5 28-4 28V18c9 0 9 18 14 18z" />
-              </svg>
-              <div>
-                <strong>VoxInsight</strong><span>.</span>
-              </div>
-            </a>
-            <p class="mt-2 mb-0 small">Mission control for customer intelligence: every call scored, every agent coached.</p>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="fw-bold mb-2">Product</div>
-            <div class="d-grid gap-1">
-              <a href="services.html">Platform</a>
-              <a href="service-details.html">Solutions</a>
-              <a href="pricing.html">Pricing</a>
-              <a href="dashboard.html">Dashboard</a>
-            </div>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="fw-bold mb-2">Company</div>
-            <div class="d-grid gap-1">
-              <a href="about.html">About</a>
-              <a href="blog.html">Blog</a>
-              <a href="contact.html">Contact</a>
-              <a href="coming-soon.html">Careers</a>
-            </div>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="fw-bold mb-2">Resources</div>
-            <div class="d-grid gap-1">
-              <a href="blog.html">Intelligence Hub</a>
-              <a href="services.html">Documentation</a>
-              <a href="pricing.html">ROI</a>
-              <a href="contact.html#demo">Request Demo</a>
-            </div>
-          </div>
-          <div class="col-6 col-lg-2">
-            <div class="fw-bold mb-2">Legal</div>
-            <div class="d-grid gap-1">
-              <a href="404.html">Privacy</a>
-              <a href="404.html">Terms</a>
-              <a href="404.html">Security</a>
-              <a href="404.html">DPA</a>
-            </div>
-          </div>
-        </div>
-        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
-          <div class="small">© 2026 VoxInsight</div>
-          <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
-            <i class="bi bi-arrow-up" aria-hidden="true"></i>
+          <button class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" type="button" data-vi-theme-toggle
+            aria-pressed="false" aria-label="Toggle theme">
+            <i class="bi bi-circle-half" aria-hidden="true"></i>
           </button>
+          <a class="btn btn-vi btn-vi-primary d-none d-sm-inline-flex" href="dashboard.html">Dashboard</a>
+          <a class="btn btn-vi btn-vi-outline d-none d-sm-inline-flex" href="login.html">Login</a>
+        </div>
+      </nav>
+    </div>
+
+  </header>
+
+  <div class="offcanvas offcanvas-top vi-offcanvas" tabindex="-1" id="viOffcanvas" aria-labelledby="viOffcanvasLabel">
+    <div class="offcanvas-header">
+      <div class="vi-logo" id="viOffcanvasLabel">
+        <img src="assets/images/logo.svg" alt="VoxInsight Logo" height="34">
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav flex-column" aria-label="Mobile">
+        <a class="nav-link active" href="index.html">Home</a>
+        <a class="nav-link" href="home-2.html">Home 2</a>
+        <a class="nav-link" href="services.html">Platform</a>
+        <a class="nav-link" href="service-details.html">Solutions</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="pricing.html">Pricing</a>
+        <a class="nav-link" href="blog.html">Blog</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+        <div class="mt-3 d-grid gap-2">
+          <button class="btn btn-vi btn-vi-outline" type="button" data-vi-dir-toggle aria-pressed="false">
+            <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono" data-vi-dir-label>LTR</span>
+          </button>
+          <button class="btn btn-vi btn-vi-outline" type="button" data-vi-theme-toggle aria-pressed="false"
+            aria-label="Toggle theme">
+            <i class="bi bi-circle-half" aria-hidden="true"></i>
+          </button>
+          <a class="btn btn-vi btn-vi-primary" href="dashboard.html">Dashboard</a>
+          <a class="btn btn-vi btn-vi-outline" href="login.html">Login</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="vi-hero"
+      style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('assets/images/hero-viz.png') center/cover no-repeat;">
+      <div class="container vi-container">
+        <div class="vi-split align-items-start">
+          <div class="vi-transcript">
+            <div class="vi-transcript-inner" data-vi-transcript aria-live="polite"
+              aria-label="Live transcript simulation"></div>
+          </div>
+          <div class="vi-gauge">
+            <div class="vi-gauge-ring" data-vi-gauge-ring style="--vi-gauge-deg:240deg">
+              <div class="vi-gauge-center">
+                <div class="score" data-vi-gauge-score>78</div>
+                <div class="state" data-vi-gauge-state>Positive</div>
+                <div class="hint">Sentiment score (0–100)</div>
+              </div>
+            </div>
+            <div class="d-flex flex-wrap gap-2 justify-content-center">
+              <span class="vi-badge dot">Live scoring</span>
+              <span class="vi-badge">AHT drift watch</span>
+              <span class="vi-badge">Escalation risk</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4">
+          <h1 class="vi-h1">Stop Guessing. Start Hearing.</h1>
+          <p class="vi-lead mt-2">
+            VoxInsight turns recordings into coaching signals: sentiment curves, CSAT impact, silence gaps, escalation
+            triggers, and agent behaviors you can replicate.
+          </p>
+          <div class="d-flex flex-wrap gap-2 mt-3">
+            <a class="btn btn-vi btn-vi-primary" href="dashboard.html">See VoxInsight in Action</a>
+            <a class="btn btn-vi btn-vi-outline" href="services.html">Explore the Platform</a>
+          </div>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="assets/js/main.js"></script>
-  </body>
+    <section class="vi-section compact">
+      <div class="container vi-container">
+        <div class="vi-compare">
+          <div class="pain">
+            <h2 class="vi-h2 mb-3">The problem you already have</h2>
+            <div class="row">
+              <div class="t">Your agents wing every call.</div>
+              <div class="d">Inconsistent talk tracks increase AHT and drop CSAT in the same week.</div>
+            </div>
+            <div class="row">
+              <div class="t">You review 2% of conversations.</div>
+              <div class="d">Sampling misses the exact moment tone turns and escalation starts.</div>
+            </div>
+            <div class="row">
+              <div class="t">Complaints spike before you notice.</div>
+              <div class="d">Supervisors see it after the damage: churn, chargebacks, and low scores.</div>
+            </div>
+            <div class="row">
+              <div class="t">Top performers’ habits stay hidden.</div>
+              <div class="d">What they say and when they say it never becomes a repeatable playbook.</div>
+            </div>
+          </div>
+          <div class="answer">
+            <h2 class="vi-h2 mb-3">VoxInsight makes it measurable</h2>
+            <div class="row">
+              <div class="t">Agent Performance Index per call.</div>
+              <div class="d">Detect pacing, interruptions, empathy phrases, and resolution confidence.</div>
+            </div>
+            <div class="row">
+              <div class="t">100% coverage, not guesswork.</div>
+              <div class="d">Every call scored for sentiment, silence gaps, and escalation triggers.</div>
+            </div>
+            <div class="row">
+              <div class="t">Alerts before CSAT drops.</div>
+              <div class="d">Flag negative spikes at timestamp precision for instant review.</div>
+            </div>
+            <div class="row">
+              <div class="t">Codify winning behaviors.</div>
+              <div class="d">Surface language patterns tied to First Call Resolution and lower AHT.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vi-section">
+      <div class="container vi-container">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+          <div>
+            <h2 class="vi-h2 mb-2">Metric dashboard preview</h2>
+            <p class="vi-lead mb-0">A supervisor’s view of what changes on the floor, hour by hour.</p>
+          </div>
+          <span class="vi-badge dot">Static preview</span>
+        </div>
+
+        <div class="vi-dashboard-mock mt-3">
+          <div class="vi-dashboard-top">
+            <div class="vi-mono fw-bold">Operations — Last 7 days</div>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="vi-badge">CSAT 87%</span>
+              <span class="vi-badge">AHT 4m 12s</span>
+              <span class="vi-badge">Sentiment 72%+</span>
+              <span class="vi-badge">Escalations 3.1%</span>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="vi-grid-2">
+              <div class="vi-card vi-card-tight">
+                <div class="vi-card-body vi-metric">
+                  <div>
+                    <div class="label">CSAT Score</div>
+                    <div class="small opacity-75">Post-call survey impact</div>
+                  </div>
+                  <div class="value">87%</div>
+                </div>
+              </div>
+              <div class="vi-card vi-card-tight">
+                <div class="vi-card-body vi-metric">
+                  <div>
+                    <div class="label">AHT</div>
+                    <div class="small opacity-75">Average handle time</div>
+                  </div>
+                  <div class="value">4:12</div>
+                </div>
+              </div>
+              <div class="vi-card vi-card-tight">
+                <div class="vi-card-body vi-metric">
+                  <div>
+                    <div class="label">Sentiment</div>
+                    <div class="small opacity-75">Positive share</div>
+                  </div>
+                  <div class="value">72%</div>
+                </div>
+              </div>
+              <div class="vi-card vi-card-tight">
+                <div class="vi-card-body vi-metric">
+                  <div>
+                    <div class="label">Escalation Rate</div>
+                    <div class="small opacity-75">Supervisor takeovers</div>
+                  </div>
+                  <div class="value">3.1%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="vi-bars" aria-label="Weekly sentiment trend">
+            <div class="vi-bar" aria-label="Monday"><span style="height:62%"></span></div>
+            <div class="vi-bar" aria-label="Tuesday"><span style="height:54%"></span></div>
+            <div class="vi-bar" aria-label="Wednesday"><span style="height:68%"></span></div>
+            <div class="vi-bar" aria-label="Thursday"><span style="height:64%"></span></div>
+            <div class="vi-bar" aria-label="Friday"><span style="height:72%"></span></div>
+            <div class="vi-bar" aria-label="Saturday"><span style="height:69%"></span></div>
+            <div class="vi-bar" aria-label="Sunday"><span style="height:75%"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vi-section compact">
+      <div class="container vi-container">
+        <div class="d-flex flex-column flex-lg-row align-items-lg-end justify-content-between gap-2">
+          <div>
+            <h2 class="vi-h2 mb-2">Who uses VoxInsight</h2>
+            <p class="vi-lead mb-0">Vertical playbooks built on real call behavior, not generic analytics.</p>
+          </div>
+          <a class="btn btn-vi btn-vi-outline" href="service-details.html">See industry use cases</a>
+        </div>
+
+        <div class="vi-verticals mt-3 d-grid gap-2">
+          <div class="vi-row">
+            <div class="k">Insurance</div>
+            <div class="u">Detect policy confusion in real-time before it becomes a complaint.</div>
+            <div class="m">↑ 23% First Call Resolution</div>
+          </div>
+          <div class="vi-row">
+            <div class="k">Telecom</div>
+            <div class="u">Catch escalation triggers in the first 30 seconds and protect CSAT.</div>
+            <div class="m">↓ 17% Escalations</div>
+          </div>
+          <div class="vi-row">
+            <div class="k">Banking</div>
+            <div class="u">Flag compliance-sensitive phrases and verify resolution confidence.</div>
+            <div class="m">↑ 11% QA pass rate</div>
+          </div>
+          <div class="vi-row">
+            <div class="k">Healthcare</div>
+            <div class="u">Measure empathy and clarity in appointment + billing calls.</div>
+            <div class="m">↑ 19% Patient satisfaction</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vi-trust">
+      <div class="container vi-container">
+        <div class="d-flex flex-wrap justify-content-center row-gap">
+          <div class="item">Salesforce</div>
+          <div class="item">Zendesk</div>
+          <div class="item">Five9</div>
+          <div class="item">Twilio</div>
+          <div class="item">Genesys</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vi-section dark">
+      <div class="container vi-container">
+        <div class="vi-split align-items-center">
+          <div>
+            <h2 class="vi-h2">Your call recordings are a goldmine. Are you mining them?</h2>
+            <p class="vi-lead mt-2">Get a demo built on your metrics: AHT, CSAT, First Call Resolution, and sentiment
+              volatility.</p>
+          </div>
+          <form class="vi-form needs-validation" id="demo" novalidate>
+            <div class="d-grid gap-2">
+              <label class="form-label fw-bold" for="emailDemo">Work email</label>
+              <input class="form-control" id="emailDemo" type="email" placeholder="name@company.com" required />
+              <div class="invalid-feedback">Enter a valid email address.</div>
+              <a class="btn btn-vi btn-vi-primary" href="dashboard.html">Dashboard</a>
+              <div class="small opacity-75">No spam. Demo includes a sample sentiment timeline and coaching flags.</div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="vi-footer">
+    <div class="container vi-container">
+      <div class="row g-4">
+        <div class="col-12 col-lg-4">
+          <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+            <img src="assets/images/logo.svg" alt="VoxInsight Logo" height="34">
+          </a>
+          <p class="mt-2 mb-0 small">Mission control for customer intelligence: every call scored, every agent coached.
+          </p>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-bold mb-2">Product</div>
+          <div class="d-grid gap-1">
+            <a href="services.html">Platform</a>
+            <a href="service-details.html">Solutions</a>
+            <a href="pricing.html">Pricing</a>
+            <a href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-bold mb-2">Company</div>
+          <div class="d-grid gap-1">
+            <a href="about.html">About</a>
+            <a href="blog.html">Blog</a>
+            <a href="contact.html">Contact</a>
+            <a href="coming-soon.html">Careers</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-bold mb-2">Resources</div>
+          <div class="d-grid gap-1">
+            <a href="blog.html">Intelligence Hub</a>
+            <a href="services.html">Documentation</a>
+            <a href="pricing.html">ROI</a>
+            <a href="dashboard.html">Dashboard</a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="fw-bold mb-2">Legal</div>
+          <div class="d-grid gap-1">
+            <a href="404.html">Privacy</a>
+            <a href="404.html">Terms</a>
+            <a href="404.html">Security</a>
+            <a href="404.html">DPA</a>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-4">
+        <div class="small">© 2026 VoxInsight</div>
+        <button class="backtop" type="button" data-vi-backtop aria-label="Back to top">
+          <i class="bi bi-arrow-up" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
 </html>
