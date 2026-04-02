@@ -21,7 +21,7 @@ html {
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
   overflow-x: hidden
 }
 
@@ -746,6 +746,7 @@ a:hover {
   background: var(--vi-soft) !important;
   color: var(--vi-accent) !important;
   border-color: var(--vi-accent);
+  transform: translateY(-2px) scale(1.05);
   opacity: 1;
   text-decoration: none;
 }
@@ -949,6 +950,7 @@ a:hover {
   border: 1px solid var(--vi-border);
   background: var(--vi-soft);
   position: relative;
+  aspect-ratio: 16/9;
 }
 
 .vi-img-box img {
@@ -995,6 +997,55 @@ a:hover {
 .vi-sort {
   cursor: pointer;
   user-select: none;
+}
+
+/* Back to Top Button */
+.vi-back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--vi-accent);
+  color: var(--vi-white);
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  box-shadow: var(--vi-shadow-sm);
+}
+
+.vi-back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.vi-back-to-top:hover {
+  background-color: var(--vi-dark);
+  color: var(--vi-white);
+  transform: translateY(-5px);
+  box-shadow: var(--vi-shadow);
+}
+
+.vi-back-to-top i {
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  .vi-back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
 }
 
 @media (prefers-reduced-motion:reduce) {

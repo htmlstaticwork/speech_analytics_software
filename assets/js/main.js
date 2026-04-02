@@ -147,11 +147,37 @@
     });
   };
 
+  const initBackToTop = () => {
+    const btn = document.createElement("button");
+    btn.className = "vi-back-to-top";
+    btn.setAttribute("aria-label", "Back to top");
+    btn.innerHTML = '<i class="bi bi-arrow-up"></i>';
+    document.body.appendChild(btn);
+
+    const checkScroll = () => {
+      const scrolled = window.scrollY || document.documentElement.scrollTop;
+      if (scrolled > 300) {
+        btn.classList.add("show");
+      } else {
+        btn.classList.remove("show");
+      }
+    };
+
+    window.addEventListener("scroll", checkScroll);
+    btn.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     applyPrefs();
     bindToggles();
     initBootstrapValidation();
     initTranscriptDemo();
     initRoiCalculator();
+    initBackToTop();
   });
 })();

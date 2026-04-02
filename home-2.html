@@ -19,23 +19,24 @@
   <link href="assets/css/rtl.css" rel="stylesheet" />
   <style>
     .vi-bento-item {
-  position: relative;
-  border-radius: var(--vi-radius);
-  border: 1px solid var(--vi-border);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px) saturate(120%);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: var(--vi-shadow-sm);
-  padding: 0;
-}
+      position: relative;
+      border-radius: var(--vi-radius);
+      border: 1px solid var(--vi-border);
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(8px) saturate(120%);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: var(--vi-shadow-sm);
+      padding: 0;
+    }
 
-[data-theme="dark"] .vi-bento-item {
-  background: rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.1);
-}
+    [data-theme="dark"] .vi-bento-item {
+      background: rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
     .vi-wave {
       border-radius: var(--vi-radius);
       border: 1px solid var(--vi-border);
@@ -212,7 +213,7 @@
 
         <div class="vi-split align-items-center">
           <div class="vi-answer-img">
-            <img src="assets/images/home2-pain.jpg" alt="Intelligence layer visual" loading="lazy">
+            <img src="assets/images/ilv.jpg" alt="Intelligence layer visual" loading="lazy">
           </div>
           <div class="accordion" id="viMissed">
             <div class="accordion-item">
@@ -231,22 +232,23 @@
             </div>
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM2"
-                  aria-expanded="false" aria-controls="viM2">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#viM2" aria-expanded="false" aria-controls="viM2">
                   Silence gaps over 5 seconds correlate with churn.
                 </button>
               </h3>
               <div id="viM2" class="accordion-collapse collapse" data-bs-parent="#viMissed">
                 <div class="accordion-body">
-                  Long pauses often mean searching, uncertainty, or policy confusion. We surface where silence happens and
+                  Long pauses often mean searching, uncertainty, or policy confusion. We surface where silence happens
+                  and
                   which scripts prevent it.
                 </div>
               </div>
             </div>
             <div class="accordion-item">
               <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#viM3"
-                  aria-expanded="false" aria-controls="viM3">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#viM3" aria-expanded="false" aria-controls="viM3">
                   Agents who mirror customer language close 40% more.
                 </button>
               </h3>
@@ -275,33 +277,36 @@
         <div class="vi-bento-grid mt-4">
           <!-- Insurance - Large Item -->
           <div class="vi-bento-item large">
-            <img src="assets/images/vertical-insurance.jpg" alt="Insurance Industry AI" class="vi-bento-img" loading="lazy">
+            <img src="assets/images/in.jpg" alt="Insurance Industry AI" class="vi-bento-img" loading="lazy">
             <div class="vi-bento-content">
               <div class="vi-bento-tag">Verticals</div>
               <h3 class="vi-bento-title">Insurance Claims & Compliance</h3>
-              <p class="vi-bento-desc">Detect policy confusion and high-risk sentiment markers in real-time before they escalate into formal complaints or policy churn.</p>
+              <p class="vi-bento-desc">Detect policy confusion and high-risk sentiment markers in real-time before they
+                escalate into formal complaints or policy churn.</p>
               <div class="vi-bento-metric">↑ 23% First Call Resolution</div>
             </div>
           </div>
 
           <!-- Telecom -->
           <div class="vi-bento-item">
-            <img src="assets/images/vertical-telecom.jpg" alt="Telecom Analytics" class="vi-bento-img" loading="lazy">
+            <img src="assets/images/telecome.jpeg" alt="Telecom Analytics" class="vi-bento-img" loading="lazy">
             <div class="vi-bento-content">
               <div class="vi-bento-tag">Telecom</div>
               <h3 class="vi-bento-title">Retention Intelligence</h3>
-              <p class="vi-bento-desc">Catch escalation triggers and churn intent in the first 30 seconds of billing calls.</p>
+              <p class="vi-bento-desc">Catch escalation triggers and churn intent in the first 30 seconds of billing
+                calls.</p>
               <div class="vi-bento-metric">↓ 17% Escalations</div>
             </div>
           </div>
 
           <!-- Banking -->
           <div class="vi-bento-item">
-            <img src="assets/images/vertical-banking.jpg" alt="Banking Compliance" class="vi-bento-img" loading="lazy">
+            <img src="assets/images/banking.webp" alt="Banking Compliance" class="vi-bento-img" loading="lazy">
             <div class="vi-bento-content">
               <div class="vi-bento-tag">Banking</div>
               <h3 class="vi-bento-title">Compliance Guardrails</h3>
-              <p class="vi-bento-desc">Automatically flag sensitive phrases and verify mandatory resolution scripts are followed.</p>
+              <p class="vi-bento-desc">Automatically flag sensitive phrases and verify mandatory resolution scripts are
+                followed.</p>
               <div class="vi-bento-metric">↑ 11% QA Pass Rate</div>
             </div>
           </div>
@@ -311,10 +316,11 @@
             <div class="vi-bento-content">
               <div class="vi-bento-tag">Healthcare</div>
               <h3 class="vi-bento-title">Patient Sentiment Trends</h3>
-              <p class="vi-bento-desc">Measure empathy levels and clarity in patient scheduling and billing inquiries to ensure high-quality care delivery standards are met.</p>
+              <p class="vi-bento-desc">Measure empathy levels and clarity in patient scheduling and billing inquiries to
+                ensure high-quality care delivery standards are met.</p>
               <div class="vi-bento-metric">↑ 19% Patient Satisfaction</div>
             </div>
-            <img src="assets/images/vertical-healthcare.jpg" alt="Healthcare AI Trends" class="vi-bento-img" loading="lazy">
+            <img src="assets/images/hc.jpg" alt="Healthcare AI Trends" class="vi-bento-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -440,12 +446,13 @@
           <div class="col-12 col-lg-6">
             <div class="vi-card h-100">
               <div class="vi-img-box">
-                <img src="assets/images/home2-blog-1.jpg" alt="Analytics Insight Preview" loading="lazy">
+                <img src="assets/images/Analytics Insight Preview.jpg" alt="Analytics Insight Preview" loading="lazy">
               </div>
               <div class="vi-card-body">
                 <div class="vi-bento-tag mb-2">Strategy</div>
                 <h3 class="h4 fw-bold">Connecting Tone Volatility to CSR Coaching Plans</h3>
-                <p class="mb-3 opacity-75">Learn how to transform a "negative spike" into a structured coaching workflow that reduces AHT by 14%.</p>
+                <p class="mb-3 opacity-75">Learn how to transform a "negative spike" into a structured coaching workflow
+                  that reduces AHT by 14%.</p>
                 <a class="fw-bold" href="blog-details.html">Read strategy</a>
               </div>
             </div>
@@ -453,12 +460,13 @@
           <div class="col-12 col-lg-6">
             <div class="vi-card h-100">
               <div class="vi-img-box">
-                <img src="assets/images/home2-blog-2.jpg" alt="Agent Coaching Preview" loading="lazy">
+                <img src="assets/images/ac.jpg" alt="Agent Coaching Preview" loading="lazy">
               </div>
               <div class="vi-card-body">
                 <div class="vi-bento-tag mb-2">Case Study</div>
                 <h3 class="h4 fw-bold">How VoxInsight Predicted Churn for a Global Telco</h3>
-                <p class="mb-3 opacity-75">Mapping silence gaps and resolution confidence markers across 50,000 calls to reveal hidden churn drivers.</p>
+                <p class="mb-3 opacity-75">Mapping silence gaps and resolution confidence markers across 50,000 calls to
+                  reveal hidden churn drivers.</p>
                 <a class="fw-bold" href="blog-details.html">Read case study</a>
               </div>
             </div>
@@ -536,9 +544,10 @@
           </div>
         </div>
       </div>
-      <div class="d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center gap-3 mt-5 pt-4 border-top text-center text-lg-start">
+      <div
+        class="d-flex flex-column flex-lg-row flex-wrap justify-content-center justify-content-lg-between align-items-center gap-3 mt-5 pt-4 border-top text-center text-lg-start">
         <div class="small opacity-75">© 2026 VoxInsight — All Rights Reserved.</div>
-        
+
         <div class="vi-social-links">
           <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
           <a href="#" aria-label="X (Twitter)"><i class="bi bi-twitter-x"></i></a>
