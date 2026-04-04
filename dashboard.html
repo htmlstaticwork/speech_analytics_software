@@ -99,6 +99,41 @@
 </head>
 
 <body id="top">
+  <div class="offcanvas offcanvas-start vi-side-offcanvas" tabindex="-1" id="viSidebar"
+    aria-labelledby="viSidebarLabel">
+    <div class="offcanvas-header">
+        <div class="vi-nav-brand">
+          <a class="vi-logo" href="index.html" aria-label="VoxInsight home">
+            <img src="assets/images/logo.svg" alt="VoxInsight Logo" height="34">
+          </a>
+        </div>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="nav" aria-label="Dashboard mobile">
+        <button type="button" class="active" data-vi-tab-btn="overview" data-bs-dismiss="offcanvas"><i
+            class="bi bi-speedometer2" aria-hidden="true"></i> Overview</button>
+        <button type="button" data-vi-tab-btn="upload" data-bs-dismiss="offcanvas"><i class="bi bi-upload"
+            aria-hidden="true"></i> Call
+          Upload</button>
+        <button type="button" data-vi-tab-btn="sentiment" data-bs-dismiss="offcanvas"><i class="bi bi-activity"
+            aria-hidden="true"></i> Sentiment
+          Analysis</button>
+        <button type="button" data-vi-tab-btn="scoreboard" data-bs-dismiss="offcanvas"><i class="bi bi-table"
+            aria-hidden="true"></i> Agent
+          Scoreboard</button>
+        <button type="button" data-vi-tab-btn="alerts" data-bs-dismiss="offcanvas"><i class="bi bi-bell"
+            aria-hidden="true"></i> Alerts</button>
+        <button type="button" data-vi-tab-btn="reports" data-bs-dismiss="offcanvas"><i class="bi bi-download"
+            aria-hidden="true"></i>
+          Reports</button>
+        <button type="button" data-vi-tab-btn="settings" data-bs-dismiss="offcanvas"><i class="bi bi-gear"
+            aria-hidden="true"></i> Settings</button>
+        <a class="btn btn-vi btn-vi-outline mt-2" href="index.html">Logout</a>
+      </nav>
+    </div>
+  </div>
+
   <main class="vi-dashboard">
     <aside class="vi-side">
       <div class="brand">
@@ -126,20 +161,24 @@
 
     <section class="vi-main">
       <div class="vi-topbar">
-        <div class="d-flex align-items-center gap-2">
-          <span class="vi-badge dot">Live</span>
-          <span class="vi-mono fw-bold">CX Operations</span>
+        <div class="vi-topbar-left d-flex align-items-center gap-3">
+          <button class="btn btn-vi btn-vi-outline d-lg-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#viSidebar" aria-controls="viSidebar" aria-label="Open menu">
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <span class="vi-badge dot"><span class="d-none d-sm-inline">Live</span></span>
+          <span class="vi-mono fw-bold d-none d-sm-inline">CX Operations</span>
         </div>
         <div class="right">
           <button class="btn btn-vi btn-vi-outline" type="button" data-vi-dir-toggle aria-pressed="false"
             aria-label="Toggle direction">
-            <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono" data-vi-dir-label>LTR</span>
+            <i class="bi bi-text-paragraph" aria-hidden="true"></i> <span class="vi-mono d-none d-sm-inline" data-vi-dir-label>LTR</span>
           </button>
           <button class="btn btn-vi btn-vi-outline" type="button" data-vi-theme-toggle aria-pressed="false"
             aria-label="Toggle theme">
             <i class="bi bi-circle-half" aria-hidden="true"></i>
           </button>
-          <button class="btn btn-vi btn-vi-outline" type="button" aria-label="Notifications">
+          <button class="btn btn-vi btn-vi-outline d-none d-md-inline-flex" type="button" aria-label="Notifications">
             <i class="bi bi-bell" aria-hidden="true"></i>
           </button>
           <div class="vi-avatar" aria-label="Profile">VM</div>
@@ -293,7 +332,7 @@
                       <div class="s">Positive</div>
                     </div>
                   </div>
-                  <div class="d-flex justify-content-between gap-2 mt-3">
+                  <div class="d-flex flex-wrap gap-2 mt-3">
                     <span class="vi-badge dot">Positive 64%</span>
                     <span class="vi-badge">Neutral 21%</span>
                     <span class="vi-badge">Negative 15%</span>
@@ -425,7 +464,7 @@
             <div class="col-12">
               <div class="vi-card">
                 <div class="vi-card-body">
-                  <div class="d-flex align-items-end justify-content-between gap-2">
+                  <div class="d-flex flex-wrap align-items-end justify-content-between gap-2">
                     <div>
                       <div class="fw-bold">Alerts</div>
                       <div class="small opacity-75">Flagged events supervisors review first.</div>

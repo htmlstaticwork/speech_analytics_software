@@ -73,7 +73,7 @@ a:hover {
 }
 
 .vi-container {
-  max-width: 1160px
+  max-width: 1240px
 }
 
 .vi-logo {
@@ -126,7 +126,21 @@ a:hover {
 }
 
 .vi-nav-actions .btn {
-  min-height: 44px
+  min-height: 44px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Equal width for Dashboard and Login links */
+.vi-nav-actions a.btn {
+  min-width: 110px;
+}
+
+/* Icon buttons remain square-ish */
+.vi-nav-actions button.btn {
+  width: 44px;
+  padding: 0;
 }
 
 .vi-nav-toggler:focus {
@@ -248,14 +262,30 @@ a:hover {
 }
 
 .btn-vi-outline {
-  border: 1px solid var(--vi-border);
+  border: 1px solid rgba(0, 0, 0, .25);
   background: transparent;
   color: inherit;
+  transition: all 0.2s ease;
 }
 
 .btn-vi-outline:hover {
   background: var(--vi-soft);
-  color: inherit
+  color: inherit;
+  border-color: var(--vi-accent);
+}
+
+.vi-section.dark .btn-vi-outline,
+.vi-wave .btn-vi-outline {
+  border-color: rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .05);
+  color: var(--vi-white);
+}
+
+.vi-section.dark .btn-vi-outline:hover,
+.vi-wave .btn-vi-outline:hover {
+  background: rgba(255, 255, 255, .12);
+  border-color: var(--vi-white);
+  color: var(--vi-white);
 }
 
 .vi-hero {
@@ -511,11 +541,20 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 10px;
+  padding: 6px 12px;
   border-radius: 999px;
   border: 1px solid var(--vi-border);
+  background: var(--vi-soft);
   font-family: var(--vi-mono);
   font-size: 12px;
+  font-weight: 700;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.vi-badge:hover {
+  background: rgba(0, 0, 0, .08);
+  border-color: var(--vi-accent);
 }
 
 .vi-badge.dot::before {
@@ -644,12 +683,19 @@ a:hover {
 }
 
 .vi-bento-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(161, 98, 7, .16);
+  background: rgba(161, 98, 7, .06);
   font-family: var(--vi-mono);
   font-weight: 900;
   color: var(--vi-accent);
-  font-size: 14px;
-  margin-bottom: 8px;
+  font-size: 11px;
+  margin-bottom: 12px;
   text-transform: uppercase;
+  letter-spacing: .02em;
 }
 
 .vi-bento-title {
@@ -780,7 +826,7 @@ a:hover {
   background: transparent;
 }
 .vi-offcanvas .nav-link {
-  color: var(--vi-white) !important;
+  color: var(--vi-fg) !important;
   opacity: 0.82;
   white-space: nowrap;
 }
@@ -847,6 +893,72 @@ a:hover {
   }
 }
 
+@media (max-width: 991.98px) {
+  .vi-side {
+    display: none !important;
+  }
+}
+
+.vi-side-offcanvas {
+  background: var(--vi-black) !important;
+  color: var(--vi-white) !important;
+  width: min(280px, 100vw) !important;
+  border-right: 1px solid rgba(255, 255, 255, .12);
+}
+
+.vi-side-offcanvas .offcanvas-header {
+  padding: 0;
+  display: block;
+  position: relative;
+  min-height: 56px;
+}
+
+.vi-side-offcanvas .offcanvas-header .btn-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 10;
+}
+
+.vi-side-offcanvas .offcanvas-body {
+  padding: 0;
+}
+
+.vi-side-offcanvas .brand {
+  padding: 18px 18px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.vi-side-offcanvas .nav {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.vi-side-offcanvas .nav button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: 14px;
+  padding: 12px;
+  text-align: left;
+  font-weight: 800;
+}
+
+.vi-side-offcanvas .nav button:hover {
+  background: rgba(255, 255, 255, .06)
+}
+
+.vi-side-offcanvas .nav button.active {
+  border-color: rgba(255, 255, 255, .16);
+  background: rgba(255, 255, 255, .08);
+}
+
 .vi-side {
   background: var(--vi-black);
   color: var(--vi-white);
@@ -901,6 +1013,8 @@ a:hover {
 .vi-main {
   background: var(--vi-bg);
   color: var(--vi-fg);
+  min-width: 0;
+  overflow-x: hidden;
 }
 
 .vi-topbar {
@@ -921,6 +1035,37 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 10px
+}
+
+@media (max-width: 575.98px) {
+  .vi-side-offcanvas .brand {
+    display: none;
+  }
+
+  .vi-side-offcanvas .offcanvas-body {
+    padding-top: 8px;
+  }
+
+  .vi-topbar {
+    flex-wrap: wrap;
+    padding: 10px 10px;
+    gap: 10px;
+  }
+
+  .vi-topbar-left {
+    min-width: 0;
+    gap: 10px !important;
+  }
+
+  .vi-topbar .vi-badge.dot {
+    gap: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .vi-topbar .right {
+    gap: 8px;
+  }
 }
 
 .vi-avatar {
@@ -1002,7 +1147,7 @@ a:hover {
 /* Back to Top Button */
 .vi-back-to-top {
   position: fixed;
-  bottom: 30px;
+  bottom: 75px;
   right: 30px;
   width: 50px;
   height: 50px;

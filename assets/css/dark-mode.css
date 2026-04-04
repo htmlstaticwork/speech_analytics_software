@@ -51,13 +51,26 @@
 
 [data-theme="dark"] .vi-footer{border-top-color:var(--vi-border)}
 
-[data-theme="dark"] .vi-form .form-control,
-[data-theme="dark"] .vi-form .form-select{
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select{
   background:rgba(0,0,0,.18);
   color:var(--vi-white);
   border-color:var(--vi-border);
 }
-[data-theme="dark"] .vi-form .form-control::placeholder{color:rgba(255,255,255,.62)}
+[data-theme="dark"] .form-control::placeholder{color:rgba(255,255,255,.62)}
+
+[data-theme="dark"] .vi-chip,
+[data-theme="dark"] .tag,
+[data-theme="dark"] .vi-post .meta .tag,
+[data-theme="dark"] label,
+[data-theme="dark"] .fw-bold {
+  color: var(--vi-white);
+}
+
+[data-theme="dark"] .vi-chip.active {
+  color: var(--vi-white);
+  background: var(--vi-accent);
+}
 
 [data-theme="dark"] .vi-auth-card{background:rgba(255,255,255,.04)}
 
@@ -68,5 +81,13 @@
 }
 [data-theme="dark"] .vi-offcanvas .btn-close{filter:invert(1)}
 
-[data-theme="dark"] .table{color:var(--vi-white)}
-[data-theme="dark"] .table> :not(caption)>*>*{background-color:transparent}
+[data-theme="dark"] .table,
+[data-theme="dark"] .vi-table,
+[data-theme="dark"] .vi-table thead th,
+[data-theme="dark"] .vi-table tbody td {
+  color: var(--vi-white) !important;
+}
+[data-theme="dark"] .table> :not(caption)>*>* {
+  background-color: transparent;
+  border-bottom-color: var(--vi-border);
+}

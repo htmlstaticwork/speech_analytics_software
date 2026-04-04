@@ -21,8 +21,6 @@
     root.setAttribute("dir", normalized);
     localStorage.setItem(storageKeys.dir, normalized);
     document.querySelectorAll("[data-vi-dir-toggle]").forEach((btn) => {
-      const label = btn.querySelector("[data-vi-dir-label]");
-      if (label) label.textContent = normalized.toUpperCase();
       btn.setAttribute("aria-pressed", normalized === "rtl" ? "true" : "false");
     });
     root.dispatchEvent(new CustomEvent("vi-dir-change", { detail: { dir: normalized } }));
