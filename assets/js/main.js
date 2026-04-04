@@ -170,6 +170,27 @@
     });
   };
 
+  const initPasswordToggle = () => {
+    const toggles = document.querySelectorAll("[data-vi-password-toggle]");
+    toggles.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const input = btn.parentElement.querySelector("input");
+        const icon = btn.querySelector("i");
+        if (!input || !icon) return;
+
+        if (input.type === "password") {
+          input.type = "text";
+          icon.classList.replace("bi-eye", "bi-eye-slash");
+          btn.setAttribute("aria-label", "Hide password");
+        } else {
+          input.type = "password";
+          icon.classList.replace("bi-eye-slash", "bi-eye");
+          btn.setAttribute("aria-label", "Show password");
+        }
+      });
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     applyPrefs();
     bindToggles();
@@ -177,5 +198,6 @@
     initTranscriptDemo();
     initRoiCalculator();
     initBackToTop();
+    initPasswordToggle();
   });
 })();

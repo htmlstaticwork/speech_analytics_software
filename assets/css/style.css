@@ -814,6 +814,42 @@ a:hover {
   box-shadow: 0 0 0 .25rem rgba(161, 98, 7, .2);
 }
 
+.vi-password-toggle-group {
+  position: relative;
+}
+
+.vi-password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--vi-fg);
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+  z-index: 5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vi-password-toggle:hover {
+  opacity: 1;
+}
+
+.vi-password-toggle i {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Ensure padding so the icon doesn't overlap text */
+.vi-password-toggle-group .form-control {
+  padding-right: 44px;
+}
+
 .vi-offcanvas{
   border-bottom: 2px solid var(--vi-accent);
   height: auto !important;
@@ -1244,3 +1280,38 @@ a:hover {
 .item-telecom .vi-vertical-card-img img { filter: hue-rotate(45deg); }
 .item-banking .vi-vertical-card-img img { filter: hue-rotate(90deg); }
 .item-healthcare .vi-vertical-card-img img { filter: hue-rotate(180deg); }
+
+/* Dashboard Card Alignments (Settings & Reports) */
+.vi-tab[data-vi-tab="settings"] .row,
+.vi-tab[data-vi-tab="reports"] .row {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
+.vi-tab[data-vi-tab="settings"] .vi-card,
+.vi-tab[data-vi-tab="reports"] .vi-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.vi-tab[data-vi-tab="settings"] .vi-card .vi-card-body,
+.vi-tab[data-vi-tab="reports"] .vi-card .vi-card-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push buttons to bottom */
+.vi-tab[data-vi-tab="settings"] .vi-form,
+.vi-tab[data-vi-tab="settings"] .vi-form .d-grid,
+.vi-tab[data-vi-tab="reports"] .d-grid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vi-tab[data-vi-tab="settings"] .vi-form button[type="submit"],
+.vi-tab[data-vi-tab="reports"] .btn-vi {
+  margin-top: auto;
+}
