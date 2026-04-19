@@ -14,6 +14,7 @@
     document.querySelectorAll("[data-vi-theme-toggle]").forEach((btn) => {
       btn.setAttribute("aria-pressed", normalized === "dark" ? "true" : "false");
     });
+    root.dispatchEvent(new CustomEvent("vi-theme-change", { detail: { theme: normalized } }));
   };
 
   const setDir = (dir) => {
@@ -122,6 +123,269 @@
     }, 1000);
   };
 
+  const initScrollReveal = () => {
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    const candidates = Array.from(
+      document.querySelectorAll(
+        "section.vi-section, section.vi-trust, .vi-dashboard-mock, .vi-card, .vi-bento-item, .vi-row, .vi-transcript, .vi-gauge"
+      )
+    );
+
+    if (!candidates.length) return;
+
+    candidates.forEach((el) => el.classList.add("vi-reveal"));
+
+    if (prefersReducedMotion) {
+      candidates.forEach((el) => el.classList.add("vi-reveal-in"));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("vi-reveal-in");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -10% 0px" }
+    );
+
+    candidates.forEach((el) => observer.observe(el));
+  };
+
+  const initDashboardMockPreview = () => {
+    const mock = document.querySelector("[data-vi-dashboard-mock]");
+    if (!mock) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const metrics = Array.from(mock.querySelectorAll("[data-vi-count]"));
+    const bars = Array.from(mock.querySelectorAll("[data-vi-bar]"));
+
+    const pad2 = (n) => String(n).padStart(2, "0");
+
+    const formatTime = (totalSeconds) => {
+      const s = Math.max(0, Math.round(totalSeconds));
+      const m = Math.floor(s / 60);
+      const r = s % 60;
+      return `${m}:${pad2(r)}`;
+    };
+
+    const animate = (el, to, fmt) => {
+      const durationMs = 950;
+      const start = performance.now();
+      const from = 0;
+
+      const tick = (now) => {
+        const t = Math.min(1, (now - start) / durationMs);
+        const eased = 1 - Math.pow(1 - t, 3);
+        const v = from + (to - from) * eased;
+        el.textContent = fmt(v);
+        if (t < 1) requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const run = () => {
+      if (prefersReducedMotion) {
+        metrics.forEach((el) => {
+          const type = el.getAttribute("data-vi-count");
+          const to = Number(el.getAttribute("data-vi-to"));
+          if (!Number.isFinite(to)) return;
+          if (type === "percent") el.textContent = `${Math.round(to)}%`;
+          else if (type === "decimal") el.textContent = `${to}%`;
+          else if (type === "time") el.textContent = formatTime(to);
+        });
+        bars.forEach((span) => {
+          const target = Number(span.getAttribute("data-vi-bar"));
+          if (!Number.isFinite(target)) return;
+          span.style.height = `${target}%`;
+        });
+        return;
+      }
+
+      metrics.forEach((el) => {
+        const type = el.getAttribute("data-vi-count");
+        const to = Number(el.getAttribute("data-vi-to"));
+        if (!Number.isFinite(to)) return;
+
+        if (type === "percent") animate(el, to, (v) => `${Math.round(v)}%`);
+        else if (type === "decimal") animate(el, to, (v) => `${v.toFixed(1)}%`);
+        else if (type === "time") animate(el, to, (v) => formatTime(v));
+      });
+
+      window.setTimeout(() => {
+        bars.forEach((span) => {
+          const target = Number(span.getAttribute("data-vi-bar"));
+          if (!Number.isFinite(target)) return;
+          span.style.height = `${target}%`;
+        });
+      }, 120);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        run();
+        observer.disconnect();
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(mock);
+  };
+
+  const initHeroCanvas = () => {
+    const canvas = document.querySelector("[data-vi-hero-canvas]");
+    if (!canvas) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const state = {
+      w: 0,
+      h: 0,
+      dpr: 1,
+      mouseX: 0,
+      mouseY: 0,
+      hasMouse: false,
+      particles: [],
+      raf: 0,
+    };
+
+    const resize = () => {
+      const dpr = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      const rect = canvas.getBoundingClientRect();
+      state.dpr = dpr;
+      state.w = Math.max(1, Math.floor(rect.width));
+      state.h = Math.max(1, Math.floor(rect.height));
+      canvas.width = Math.floor(state.w * dpr);
+      canvas.height = Math.floor(state.h * dpr);
+      canvas.style.width = `${state.w}px`;
+      canvas.style.height = `${state.h}px`;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const density = state.w < 520 ? 34 : 56;
+      const count = Math.max(24, Math.floor((state.w * state.h) / (density * density)));
+
+      state.particles = Array.from({ length: count }, () => ({
+        x: Math.random() * state.w,
+        y: Math.random() * state.h,
+        vx: (Math.random() - 0.5) * 0.25,
+        vy: (Math.random() - 0.5) * 0.25,
+        r: 1.2 + Math.random() * 1.6,
+      }));
+    };
+
+    const onMove = (e) => {
+      const rect = canvas.getBoundingClientRect();
+      state.mouseX = e.clientX - rect.left;
+      state.mouseY = e.clientY - rect.top;
+      state.hasMouse = true;
+    };
+
+    const clear = () => ctx.clearRect(0, 0, state.w, state.h);
+
+    const readRgb = (prop, fallback) => {
+      const raw = getComputedStyle(root).getPropertyValue(prop).trim();
+      if (!raw) return fallback;
+      const cleaned = raw.replace(/[^0-9,\s]/g, "").trim();
+      return cleaned || fallback;
+    };
+
+    const draw = () => {
+      const isDark = root.getAttribute("data-theme") === "dark";
+      const accentRgb = readRgb("--vi-accent-rgb", "161, 98, 7");
+      const accent2Rgb = readRgb("--vi-accent2-rgb", "34, 211, 238");
+      const dot = isDark ? `rgba(${accent2Rgb}, .56)` : `rgba(${accentRgb}, .42)`;
+      const line = isDark ? `rgba(${accent2Rgb}, .18)` : `rgba(${accentRgb}, .14)`;
+      const highlight = isDark ? `rgba(${accentRgb}, .26)` : `rgba(${accent2Rgb}, .20)`;
+
+      clear();
+
+      const maxLink = Math.max(90, Math.min(140, state.w * 0.16));
+
+      for (let i = 0; i < state.particles.length; i += 1) {
+        const p = state.particles[i];
+        for (let j = i + 1; j < state.particles.length; j += 1) {
+          const q = state.particles[j];
+          const dx = p.x - q.x;
+          const dy = p.y - q.y;
+          const d = Math.hypot(dx, dy);
+          if (d > maxLink) continue;
+          const a = 1 - d / maxLink;
+          ctx.strokeStyle = a > 0.6 ? highlight : line;
+          ctx.globalAlpha = Math.max(0, Math.min(1, a));
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.stroke();
+        }
+      }
+
+      ctx.globalAlpha = 1;
+      for (const p of state.particles) {
+        ctx.fillStyle = dot;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      if (state.hasMouse) {
+        ctx.fillStyle = isDark ? `rgba(${accentRgb}, .16)` : `rgba(${accentRgb}, .10)`;
+        ctx.beginPath();
+        ctx.arc(state.mouseX, state.mouseY, 120, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    };
+
+    const step = () => {
+      for (const p of state.particles) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (state.hasMouse) {
+          const dx = p.x - state.mouseX;
+          const dy = p.y - state.mouseY;
+          const d = Math.hypot(dx, dy);
+          if (d < 140 && d > 0.001) {
+            const push = (140 - d) / 140;
+            p.vx += (dx / d) * push * 0.004;
+            p.vy += (dy / d) * push * 0.004;
+          }
+        }
+
+        p.vx *= 0.985;
+        p.vy *= 0.985;
+
+        if (p.x < -20) p.x = state.w + 20;
+        if (p.x > state.w + 20) p.x = -20;
+        if (p.y < -20) p.y = state.h + 20;
+        if (p.y > state.h + 20) p.y = -20;
+      }
+
+      draw();
+      state.raf = requestAnimationFrame(step);
+    };
+
+    resize();
+    window.addEventListener("resize", resize);
+    window.addEventListener("mousemove", onMove, { passive: true });
+
+    root.addEventListener("vi-theme-change", () => draw());
+    root.addEventListener("vi-dir-change", () => draw());
+
+    if (prefersReducedMotion) {
+      draw();
+      return;
+    }
+
+    state.raf = requestAnimationFrame(step);
+  };
+
   const initRoiCalculator = () => {
     const form = document.querySelector("[data-vi-roi-form]");
     const out = document.querySelector("[data-vi-roi-out]");
@@ -195,7 +459,10 @@
     applyPrefs();
     bindToggles();
     initBootstrapValidation();
+    initScrollReveal();
     initTranscriptDemo();
+    initHeroCanvas();
+    initDashboardMockPreview();
     initRoiCalculator();
     initBackToTop();
     initPasswordToggle();

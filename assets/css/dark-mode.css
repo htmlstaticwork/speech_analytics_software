@@ -12,7 +12,7 @@
 
 [data-theme="dark"] .vi-navbar,
 [data-theme="dark"] .vi-topbar{
-  background:rgba(26,26,26,.92);
+  background:rgba(11,16,32,.72);
   border-bottom-color:rgba(255,255,255,.14);
 }
 [data-theme="dark"] .vi-nav-link {

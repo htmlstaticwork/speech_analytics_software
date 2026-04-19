@@ -29,11 +29,6 @@
         "publisher": { "@type": "Organization", "name": "VoxInsight" }
       }
     </script>
-  <style>
-    [data-theme="dark"] .vi-hero {
-      background: linear-gradient(rgba(26, 26, 26, 0.92), rgba(26, 26, 26, 0.92)), url('assets/images/hero-viz.png') center/cover no-repeat !important;
-    }
-  </style>
 </head>
 
 <body id="top">
@@ -116,39 +111,47 @@
   </div>
 
   <main id="main">
-    <section class="vi-hero"
-      style="background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('assets/images/hero-analysis.png') center/cover no-repeat;">
+    <section class="vi-hero">
+      <canvas class="vi-hero-canvas" data-vi-hero-canvas aria-hidden="true"></canvas>
       <div class="container vi-container">
-        <div class="vi-split align-items-start">
-          <div class="vi-transcript">
-            <div class="vi-transcript-inner" data-vi-transcript aria-live="polite"
-              aria-label="Live transcript simulation"></div>
+        <div class="vi-hero-grid">
+          <div class="vi-hero-copy">
+            <div class="vi-hero-kicker">
+              <span class="vi-badge dot">Speech analytics</span>
+              <span class="vi-badge">Real-time coaching signals</span>
+            </div>
+            <h1 class="vi-h1">Stop Guessing. Start Hearing.</h1>
+            <p class="vi-lead mt-2 mx-auto mx-lg-0">
+              VoxInsight turns recordings into coaching signals: sentiment curves, CSAT impact, silence gaps, escalation
+              triggers, and agent behaviors you can replicate.
+            </p>
+            <div class="vi-hero-actions">
+              <a class="btn btn-vi btn-vi-primary" href="dashboard.html">See VoxInsight in Action</a>
+              <a class="btn btn-vi btn-vi-outline" href="services.html">Explore the Platform</a>
+            </div>
           </div>
-          <div class="vi-gauge">
-            <div class="vi-gauge-ring" data-vi-gauge-ring style="--vi-gauge-deg:240deg">
-              <div class="vi-gauge-center">
-                <div class="score" data-vi-gauge-score>78</div>
-                <div class="state" data-vi-gauge-state>Positive</div>
-                <div class="hint">Sentiment score (0–100)</div>
+
+          <div class="vi-hero-panel">
+            <div class="vi-hero-panel-inner">
+              <div class="vi-transcript">
+                <div class="vi-transcript-inner" data-vi-transcript aria-live="polite"
+                  aria-label="Live transcript simulation"></div>
+              </div>
+              <div class="vi-gauge">
+                <div class="vi-gauge-ring" data-vi-gauge-ring style="--vi-gauge-deg:240deg">
+                  <div class="vi-gauge-center">
+                    <div class="score" data-vi-gauge-score>78</div>
+                    <div class="state" data-vi-gauge-state>Positive</div>
+                    <div class="hint">Sentiment score (0–100)</div>
+                  </div>
+                </div>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                  <span class="vi-badge dot">Live scoring</span>
+                  <span class="vi-badge">AHT drift watch</span>
+                  <span class="vi-badge">Escalation risk</span>
+                </div>
               </div>
             </div>
-            <div class="d-flex flex-wrap gap-2 justify-content-center">
-              <span class="vi-badge dot">Live scoring</span>
-              <span class="vi-badge">AHT drift watch</span>
-              <span class="vi-badge">Escalation risk</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-4 text-center">
-          <h1 class="vi-h1">Stop Guessing. Start Hearing.</h1>
-          <p class="vi-lead mt-2 mx-auto">
-            VoxInsight turns recordings into coaching signals: sentiment curves, CSAT impact, silence gaps, escalation
-            triggers, and agent behaviors you can replicate.
-          </p>
-          <div class="d-flex flex-wrap gap-2 mt-3 justify-content-center">
-            <a class="btn btn-vi btn-vi-primary" href="dashboard.html">See VoxInsight in Action</a>
-            <a class="btn btn-vi btn-vi-outline" href="services.html">Explore the Platform</a>
           </div>
         </div>
       </div>
@@ -214,10 +217,10 @@
         <div class="text-center mb-4">
           <h2 class="vi-h2 mb-2">Metric dashboard preview</h2>
           <p class="vi-lead mb-2 mx-auto" style="max-width: 700px;">A supervisor’s view of what changes on the floor, hour by hour.</p>
-          <span class="vi-badge dot">Static preview</span>
+          <span class="vi-badge dot">Animated preview</span>
         </div>
 
-        <div class="vi-dashboard-mock mt-3">
+        <div class="vi-dashboard-mock mt-3" data-vi-dashboard-mock>
           <div class="vi-dashboard-top">
             <div class="vi-mono fw-bold">Operations — Last 7 days</div>
             <div class="d-flex flex-wrap gap-2">
@@ -235,7 +238,7 @@
                     <div class="label">CSAT Score</div>
                     <div class="small opacity-75">Post-call survey impact</div>
                   </div>
-                  <div class="value">87%</div>
+                  <div class="value" data-vi-count="percent" data-vi-to="87">87%</div>
                 </div>
               </div>
               <div class="vi-card vi-card-tight">
@@ -244,7 +247,7 @@
                     <div class="label">AHT</div>
                     <div class="small opacity-75">Average handle time</div>
                   </div>
-                  <div class="value">4:12</div>
+                  <div class="value" data-vi-count="time" data-vi-to="252">4:12</div>
                 </div>
               </div>
               <div class="vi-card vi-card-tight">
@@ -253,7 +256,7 @@
                     <div class="label">Sentiment</div>
                     <div class="small opacity-75">Positive share</div>
                   </div>
-                  <div class="value">72%</div>
+                  <div class="value" data-vi-count="percent" data-vi-to="72">72%</div>
                 </div>
               </div>
               <div class="vi-card vi-card-tight">
@@ -262,19 +265,19 @@
                     <div class="label">Escalation Rate</div>
                     <div class="small opacity-75">Supervisor takeovers</div>
                   </div>
-                  <div class="value">3.1%</div>
+                  <div class="value" data-vi-count="decimal" data-vi-to="3.1">3.1%</div>
                 </div>
               </div>
             </div>
           </div>
           <div class="vi-bars" aria-label="Weekly sentiment trend">
-            <div class="vi-bar" aria-label="Monday"><span style="height:62%"></span></div>
-            <div class="vi-bar" aria-label="Tuesday"><span style="height:54%"></span></div>
-            <div class="vi-bar" aria-label="Wednesday"><span style="height:68%"></span></div>
-            <div class="vi-bar" aria-label="Thursday"><span style="height:64%"></span></div>
-            <div class="vi-bar" aria-label="Friday"><span style="height:72%"></span></div>
-            <div class="vi-bar" aria-label="Saturday"><span style="height:69%"></span></div>
-            <div class="vi-bar" aria-label="Sunday"><span style="height:75%"></span></div>
+            <div class="vi-bar" aria-label="Monday"><span data-vi-bar="62"></span></div>
+            <div class="vi-bar" aria-label="Tuesday"><span data-vi-bar="54"></span></div>
+            <div class="vi-bar" aria-label="Wednesday"><span data-vi-bar="68"></span></div>
+            <div class="vi-bar" aria-label="Thursday"><span data-vi-bar="64"></span></div>
+            <div class="vi-bar" aria-label="Friday"><span data-vi-bar="72"></span></div>
+            <div class="vi-bar" aria-label="Saturday"><span data-vi-bar="69"></span></div>
+            <div class="vi-bar" aria-label="Sunday"><span data-vi-bar="75"></span></div>
           </div>
         </div>
       </div>

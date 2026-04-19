@@ -165,34 +165,43 @@
   </div>
 
   <main id="main">
-    <section class="vi-hero"
-      style="background: linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.88)), url('assets/images/hero-analysis.png') center/cover no-repeat;">
+    <section class="vi-hero">
+      <canvas class="vi-hero-canvas" data-vi-hero-canvas aria-hidden="true"></canvas>
       <div class="container vi-container">
-        <div class="vi-wave">
-          <div class="text-center mb-3">
+        <div class="vi-hero-grid">
+          <div class="vi-hero-copy">
+            <div class="vi-hero-kicker">
+              <span class="vi-badge dot">Voice intelligence</span>
+              <span class="vi-badge">Operator-ready insights</span>
+            </div>
             <h1 class="vi-h1 mb-1">Every Call Tells a Story. VoxInsight Reads Between the Lines.</h1>
-            <p class="vi-lead mb-2 mx-auto">The intelligence layer that turns voice into measurable coaching and operational
+            <p class="vi-lead mb-2 mx-auto mx-lg-0">The intelligence layer that turns voice into measurable coaching and operational
               outcomes.</p>
-            <div class="d-flex flex-wrap gap-2 justify-content-center mt-3">
+            <div class="vi-hero-actions">
               <a class="btn btn-vi btn-vi-primary" href="dashboard.html">Dashboard</a>
               <a class="btn btn-vi btn-vi-outline" href="register.html">Register now</a>
             </div>
           </div>
-          <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Waveform visualization">
-            <g fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10" stroke-linecap="round">
-              <path
-                d="M10 100 L10 90 M40 100 L40 60 M70 100 L70 30 M100 100 L100 80 M130 100 L130 50 M160 100 L160 20 M190 100 L190 70 M220 100 L220 40 M250 100 L250 65 M280 100 L280 25 M310 100 L310 55 M340 100 L340 35 M370 100 L370 75 M400 100 L400 45 M430 100 L430 28 M460 100 L460 58 M490 100 L490 22 M520 100 L520 68 M550 100 L550 42 M580 100 L580 30 M610 100 L610 66 M640 100 L640 25 M670 100 L670 54 M700 100 L700 38 M730 100 L730 72 M760 100 L760 44 M790 100 L790 30 M820 100 L820 62 M850 100 L850 48 M880 100 L880 80" />
-            </g>
-            <g class="vi-pulse" fill="none" stroke="var(--vi-accent)" stroke-width="10" stroke-linecap="round">
-              <path
-                d="M25 100 L25 76 M55 100 L55 34 M85 100 L85 64 M115 100 L115 46 M145 100 L145 26 M175 100 L175 56 M205 100 L205 36 M235 100 L235 74 M265 100 L265 44 M295 100 L295 24 M325 100 L325 62 M355 100 L355 40 M385 100 L385 68 M415 100 L415 28 M445 100 L445 54 M475 100 L475 34 M505 100 L505 72 M535 100 L535 40 M565 100 L565 60 M595 100 L595 28 M625 100 L625 70 M655 100 L655 44 M685 100 L685 62 M715 100 L715 34 M745 100 L745 58 M775 100 L775 28 M805 100 L805 68 M835 100 L835 46 M865 100 L865 60" />
-            </g>
-          </svg>
-          <div class="tag">
-            <span class="vi-badge dot">Tone shifts</span>
-            <span class="vi-badge">Silence gaps</span>
-            <span class="vi-badge">Compliance cues</span>
-            <span class="vi-badge">Resolution confidence</span>
+
+          <div class="vi-hero-panel">
+            <div class="vi-wave">
+              <svg viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Waveform visualization">
+                <g fill="none" stroke="rgba(255,255,255,.16)" stroke-width="10" stroke-linecap="round">
+                  <path
+                    d="M10 100 L10 90 M40 100 L40 60 M70 100 L70 30 M100 100 L100 80 M130 100 L130 50 M160 100 L160 20 M190 100 L190 70 M220 100 L220 40 M250 100 L250 65 M280 100 L280 25 M310 100 L310 55 M340 100 L340 35 M370 100 L370 75 M400 100 L400 45 M430 100 L430 28 M460 100 L460 58 M490 100 L490 22 M520 100 L520 68 M550 100 L550 42 M580 100 L580 30 M610 100 L610 66 M640 100 L640 25 M670 100 L670 54 M700 100 L700 38 M730 100 L730 72 M760 100 L760 44 M790 100 L790 30 M820 100 L820 62 M850 100 L850 48 M880 100 L880 80" />
+                </g>
+                <g class="vi-pulse" fill="none" stroke="var(--vi-accent)" stroke-width="10" stroke-linecap="round">
+                  <path
+                    d="M25 100 L25 76 M55 100 L55 34 M85 100 L85 64 M115 100 L115 46 M145 100 L145 26 M175 100 L175 56 M205 100 L205 36 M235 100 L235 74 M265 100 L265 44 M295 100 L295 24 M325 100 L325 62 M355 100 L355 40 M385 100 L385 68 M415 100 L415 28 M445 100 L445 54 M475 100 L475 34 M505 100 L505 72 M535 100 L535 40 M565 100 L565 60 M595 100 L595 28 M625 100 L625 70 M655 100 L655 44 M685 100 L685 62 M715 100 L715 34 M745 100 L745 58 M775 100 L775 28 M805 100 L805 68 M835 100 L835 46 M865 100 L865 60" />
+                </g>
+              </svg>
+              <div class="tag">
+                <span class="vi-badge dot">Tone shifts</span>
+                <span class="vi-badge">Silence gaps</span>
+                <span class="vi-badge">Compliance cues</span>
+                <span class="vi-badge">Resolution confidence</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>

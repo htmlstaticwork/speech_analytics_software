@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;600;700;800;900&display=swap");
+
 html {
   scroll-behavior: smooth;
 }
@@ -6,16 +8,20 @@ html {
   --vi-black: #000;
   --vi-white: #fff;
   --vi-accent: #A16207;
-  --vi-dark: #1A1A1A;
+  --vi-accent-rgb: 161, 98, 7;
+  --vi-accent2: #22D3EE;
+  --vi-accent2-rgb: 34, 211, 238;
+  --vi-dark: #0B1020;
   --vi-bg: var(--vi-white);
   --vi-fg: var(--vi-black);
-  --vi-surface: var(--vi-white);
+  --vi-surface: rgba(255, 255, 255, .78);
   --vi-border: rgba(0, 0, 0, .18);
-  --vi-soft: rgba(0, 0, 0, .06);
+  --vi-soft: rgba(var(--vi-accent-rgb), .08);
   --vi-radius: 16px;
   --vi-radius-sm: 12px;
-  --vi-shadow: 0 16px 40px rgba(0, 0, 0, .14);
-  --vi-shadow-sm: 0 10px 22px rgba(0, 0, 0, .10);
+  --vi-shadow: 0 22px 64px rgba(0, 0, 0, .14);
+  --vi-shadow-sm: 0 12px 28px rgba(0, 0, 0, .10);
+  --vi-glow: 0 0 0 6px rgba(var(--vi-accent-rgb), .18);
   --vi-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
@@ -29,15 +35,15 @@ body {
   background: var(--vi-bg);
   color: var(--vi-fg);
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 :root {
   --bs-primary: var(--vi-accent);
-  --bs-primary-rgb: 161, 98, 7;
+  --bs-primary-rgb: var(--vi-accent-rgb);
   --bs-link-color: var(--vi-accent);
-  --bs-link-hover-color: rgba(161, 98, 7, .82);
-  --bs-focus-ring-color: rgba(161, 98, 7, .34);
+  --bs-link-hover-color: rgba(var(--vi-accent-rgb), .82);
+  --bs-focus-ring-color: rgba(var(--vi-accent-rgb), .34);
   --bs-border-color: var(--vi-border);
 }
 
@@ -98,8 +104,8 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 1030;
-  background: rgba(255, 255, 255, .92);
-  backdrop-filter: saturate(130%) blur(10px);
+  background: rgba(255, 255, 255, .76);
+  backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid var(--vi-border);
 }
 
@@ -145,7 +151,7 @@ a:hover {
 
 .vi-nav-toggler:focus {
   outline: none;
-  box-shadow: 0 0 0 .25rem rgba(161, 98, 7, .25)
+  box-shadow: var(--vi-glow)
 }
 
 .navbar-expand-vi {
@@ -290,6 +296,135 @@ a:hover {
 
 .vi-hero {
   padding: 52px 0 22px;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(1200px 500px at 20% 20%, rgba(var(--vi-accent-rgb), .18), transparent 60%),
+    radial-gradient(900px 420px at 80% 35%, rgba(var(--vi-accent2-rgb), .16), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, .92)),
+    url("../images/hero-data-bg.png") center/cover no-repeat;
+}
+
+[data-theme="dark"] .vi-hero {
+  background:
+    radial-gradient(1200px 500px at 20% 20%, rgba(var(--vi-accent-rgb), .24), transparent 60%),
+    radial-gradient(900px 420px at 80% 35%, rgba(var(--vi-accent2-rgb), .14), transparent 55%),
+    linear-gradient(180deg, rgba(11, 16, 32, .86), rgba(11, 16, 32, .92)),
+    url("../images/neural-bg.png") center/cover no-repeat;
+}
+
+.vi-hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.vi-hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.vi-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  .vi-hero-grid {
+    grid-template-columns: 1.05fr .95fr;
+    gap: 22px;
+  }
+}
+
+.vi-hero-copy {
+  text-align: center;
+}
+
+@media (min-width: 992px) {
+  .vi-hero-copy {
+    text-align: left;
+  }
+}
+
+.vi-hero-kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+@media (min-width: 992px) {
+  .vi-hero-kicker {
+    justify-content: flex-start;
+  }
+}
+
+.vi-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+@media (min-width: 992px) {
+  .vi-hero-actions {
+    justify-content: flex-start;
+  }
+}
+
+.vi-hero-panel {
+  border-radius: var(--vi-radius);
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .56);
+  backdrop-filter: saturate(140%) blur(18px);
+  box-shadow: var(--vi-shadow);
+  padding: 14px;
+}
+
+[data-theme="dark"] .vi-hero-panel {
+  border-color: rgba(255, 255, 255, .14);
+  background: rgba(0, 0, 0, .18);
+}
+
+.vi-hero-panel-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 1100px) {
+  .vi-hero-panel-inner {
+    grid-template-columns: 1.05fr .95fr;
+    gap: 14px;
+  }
+}
+
+.vi-hero-panel .vi-transcript {
+  height: 320px;
+}
+
+@media (min-width: 1100px) {
+  .vi-hero-panel .vi-transcript {
+    height: 360px;
+  }
+}
+
+.vi-hero-panel .vi-gauge {
+  padding: 14px;
+}
+
+.vi-h1,
+.vi-h2 {
+  font-family: Outfit, Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 .vi-h1 {
@@ -317,6 +452,14 @@ a:hover {
   border-radius: var(--vi-radius);
   background: var(--vi-surface);
   box-shadow: var(--vi-shadow-sm);
+  backdrop-filter: saturate(140%) blur(14px);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.vi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--vi-shadow);
+  border-color: rgba(var(--vi-accent-rgb), .34);
 }
 
 .vi-card-body {
@@ -349,6 +492,61 @@ a:hover {
 
 .vi-section {
   padding: 54px 0
+}
+
+.vi-page-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 64px 0 46px;
+  background:
+    radial-gradient(1100px 460px at 18% 10%, rgba(var(--vi-accent-rgb), .16), transparent 60%),
+    radial-gradient(900px 360px at 86% 30%, rgba(var(--vi-accent2-rgb), .12), transparent 55%);
+}
+
+.vi-page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .85), rgba(255, 255, 255, .96));
+  z-index: -1;
+}
+
+[data-theme="dark"] .vi-page-hero::after {
+  background:
+    linear-gradient(180deg, rgba(11, 16, 32, .82), rgba(11, 16, 32, .94));
+}
+
+.vi-page-hero .vi-img-box {
+  box-shadow: var(--vi-shadow);
+  border-color: rgba(var(--vi-accent-rgb), .22);
+  background: rgba(255, 255, 255, .60);
+  backdrop-filter: saturate(140%) blur(16px);
+}
+
+[data-theme="dark"] .vi-page-hero .vi-img-box {
+  background: rgba(0, 0, 0, .18);
+  border-color: rgba(255, 255, 255, .14);
+}
+
+.vi-reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform;
+}
+
+.vi-reveal.vi-reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+.vi-card.vi-reveal {
+  transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease;
+}
+
+.vi-bento-item.vi-reveal {
+  transition: opacity .7s cubic-bezier(.2,.8,.2,1), transform .7s cubic-bezier(.2,.8,.2,1), box-shadow .4s cubic-bezier(0.4, 0, 0.2, 1), border-color .4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .vi-section.compact {
@@ -394,6 +592,7 @@ a:hover {
   background: var(--vi-black);
   color: var(--vi-white);
   border: 1px solid rgba(255, 255, 255, .12);
+  box-shadow: var(--vi-shadow-sm);
 }
 
 .vi-transcript-inner {
@@ -423,6 +622,7 @@ a:hover {
   background: var(--vi-surface);
   padding: 18px;
   box-shadow: var(--vi-shadow-sm);
+  backdrop-filter: saturate(140%) blur(14px);
 }
 
 .vi-gauge-ring {
@@ -584,14 +784,16 @@ a:hover {
 .vi-bars {
   display: flex;
   gap: 10px;
-  align-items: flex-end;
+  align-items: stretch;
   height: 160px;
   padding: 14px 16px 16px;
   background: var(--vi-white);
 }
 
 .vi-bar {
-  width: 100%;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
   background: rgba(0, 0, 0, .08);
   border: 1px solid var(--vi-border);
   border-radius: 12px;
@@ -605,6 +807,8 @@ a:hover {
   right: 0;
   bottom: 0;
   background: var(--vi-accent);
+  height: 0%;
+  transition: height .9s cubic-bezier(.2,.8,.2,1);
 }
 
 .vi-verticals .m {
@@ -1234,6 +1438,11 @@ a:hover {
     scroll-behavior: auto !important;
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important
+  }
+
+  .vi-reveal {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }
 
