@@ -23,6 +23,17 @@
     localStorage.setItem(storageKeys.dir, normalized);
     document.querySelectorAll("[data-vi-dir-toggle]").forEach((btn) => {
       btn.setAttribute("aria-pressed", normalized === "rtl" ? "true" : "false");
+      const icon = btn.querySelector("i");
+      if (icon) {
+        // Show target direction: if currently RTL, show LTR icon (left). If LTR, show RTL icon (right).
+        if (normalized === "rtl") {
+          icon.classList.replace("bi-text-right", "bi-text-left");
+          icon.classList.replace("bi-text-paragraph", "bi-text-left");
+        } else {
+          icon.classList.replace("bi-text-left", "bi-text-right");
+          icon.classList.replace("bi-text-paragraph", "bi-text-right");
+        }
+      }
     });
     root.dispatchEvent(new CustomEvent("vi-dir-change", { detail: { dir: normalized } }));
   };
